@@ -1,8 +1,8 @@
 <?php
 
-namespace Webfucktory\PackageName\Tests\Feature;
+namespace Condividendo\LaravelCBI\Tests\Feature;
 
-use Webfucktory\PackageName\Tests\TestCase;
+use Condividendo\LaravelCBI\Tests\TestCase;
 
 class ExampleTest extends TestCase
 {

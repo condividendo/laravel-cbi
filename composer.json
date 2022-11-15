@@ -1,5 +1,5 @@
 {
-    "name": "webfucktory/laravel-package-name",
+    "name": "condividendo/laravel-cbi",
     "require": {
         "php": "^8.0",
         "illuminate/support": "^9.0"
@@ -10,12 +10,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Webfucktory\\PackageName\\": "src"
+            "Condividendo\\LaravelCBI\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Webfucktory\\PackageName\\Tests\\": "tests"
+            "Condividendo\\LaravelCBI\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Webfucktory\\PackageName\\ServiceProvider"
+                "Condividendo\\LaravelCBI\\ServiceProvider"
             ]
         }
     },

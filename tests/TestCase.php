@@ -1,9 +1,9 @@
 <?php
 
-namespace Webfucktory\PackageName\Tests;
+namespace Condividendo\LaravelCBI\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use Webfucktory\PackageName\ServiceProvider;
+use Condividendo\LaravelCBI\ServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {
