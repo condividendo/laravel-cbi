@@ -2,6 +2,7 @@
     "name": "condividendo/laravel-cbi",
     "require": {
         "php": "^7.1",
+        "brick/money": "^0.5.3",
         "illuminate/support": "5.8.*"
     },
     "require-dev": {
