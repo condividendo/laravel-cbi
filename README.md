@@ -110,6 +110,9 @@ use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentTypeInformation;
 use Condividendo\LaravelCBI\Entities\RemittanceInformation;
 use Condividendo\LaravelCBI\Enums\CategoryPurpose;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentMethod;
+use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority;
+use Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer;
+use Condividendo\LaravelCBI\Enums\ServiceLevel;
 use Illuminate\Support\Facades\Date;
 
 $sdd = CBI::paymentRequest()
@@ -122,16 +125,15 @@ $sdd = CBI::paymentRequest()
     ->setPaymentInstruction(
         PaymentInstruction::make()
             ->setId('1')
-            ->setPaymentTypeInformation(
-                PaymentTypeInformation::make()
-                    ->setCategoryPurpose(CategoryPurpose::SUPP())
-            )
             ->setPaymentMethod(PaymentMethod::TRA())
+            ->setPaymentPriority(PaymentPriority::NORM())
+            ->setServiceLevel(ServiceLevel::SEPA())
+            ->setCommissionPayer(CommissionPayer::SLEV())
             ->setRequiredExecutionDate(Date::createFromDate(2022, 1, 1))
             ->setDebtor(
                 PartyIdentification::make()
                     ->setName('Condividendo Italia s.r.l.')
-            )
+            )            
             ->setDebtorAccount('IT60X0542811101000000123456')
             ->setExecutingBank(
                 FinancialInstitution::make()
@@ -143,6 +145,10 @@ $sdd = CBI::paymentRequest()
                         PaymentId::make()
                             ->setInstructionId('1')
                             ->setEndToEndId('1.1')
+                    )
+                    ->setPaymentTypeInformation(
+                        PaymentTypeInformation::make()
+                            ->setCategoryPurpose(CategoryPurpose::SUPP())
                     )
                     ->setAmount(Money::of(100, 'EUR'))
                     ->setCreditor(
