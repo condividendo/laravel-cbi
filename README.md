@@ -108,7 +108,7 @@ use Condividendo\LaravelCBI\Entities\PaymentId;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentInstruction;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentTypeInformation;
 use Condividendo\LaravelCBI\Entities\RemittanceInformation;
-use Condividendo\LaravelCBI\Enums\CategoryPurpose;
+use Condividendo\LaravelCBI\Enums\PaymentRequest\CategoryPurpose;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentMethod;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer;
