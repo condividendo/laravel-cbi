@@ -10,7 +10,7 @@ use BenSampo\Enum\Enum;
  * @method static self SALA() Wages
  * 
  */
-final class SequenceType extends Enum
+final class CategoryPurpose extends Enum
 {
     public const SUPP = 'SUPP';
     public const SALA = 'SALA';
