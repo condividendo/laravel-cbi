@@ -28,7 +28,7 @@ class GroupHeaderBuilder
     protected $ctrlSum;
     
     /**
-     * @var array<\Condividendo\LaravelCBI\Entities\InitiatingParty>
+     * @var array<\Condividendo\LaravelCBI\Tags\InitiatingParty>
      */
     protected $initiatingParty;
 
@@ -62,7 +62,7 @@ class GroupHeaderBuilder
 
     public function setInitiatingParty(InitiatingParty $initiatingParty): self
     {
-        $this->initiatingParty = $initiatingParty;
+        $this->initiatingParty = $initiatingParty->getTag();
 
         return $this;
     }

@@ -6,7 +6,7 @@ use Condividendo\LaravelCBI\Tags\OrgId;
 use DOMDocument;
 use DOMElement;
 
-class InitiatinPartyId extends Tag
+class InitiatingPartyId extends Tag
 {
     use Makeable;
 
