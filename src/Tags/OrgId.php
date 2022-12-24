@@ -17,7 +17,7 @@ class OrgId extends Tag
 
     public function setId(string $id,string $issr): self
     {
-        $this->orgId = Other::make()->setId($id)->setIssr($issr);
+        $this->other = Other::make()->setId($id)->setIssr($issr);
 
         return $this;
     }    

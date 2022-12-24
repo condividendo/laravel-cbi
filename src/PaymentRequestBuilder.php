@@ -3,7 +3,7 @@
 namespace Condividendo\LaravelCBI;
 
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentInstruction;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentRequest as PaymentRequestTag;
+use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentRequest;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentInstruction as PaymentInstructionTag;
 use DOMDocument;
 use SimpleXMLElement;
@@ -11,13 +11,13 @@ use SimpleXMLElement;
 class PaymentRequestBuilder extends GroupHeaderBuilder
 {
     /**
-     * @var array<\Condividendo\LaravelCBI\PaymentRequest\Entities\PaymentInstruction>
+     * @var array<\Condividendo\LaravelCBI\PaymentRequest\Tags\PaymentInstruction>
      */
     private $paymentInstruction;
 
     public function setPaymentInstruction(PaymentInstruction $paymentInstruction): self
     {
-        $this->paymentInstruction = $paymentInstruction;
+        $this->paymentInstruction = $paymentInstruction->getTag();
 
         return $this;
     }
@@ -25,7 +25,7 @@ class PaymentRequestBuilder extends GroupHeaderBuilder
     public function toDOM(): DOMDocument
     {
         $dom = new DOMDocument();
-        $dom->appendChild($this->makePaymentRequestTag()->toDOMElement($dom));
+        $dom->appendChild($this->makePaymentRequest()->toDOMElement($dom));
 
         return $dom;
     }
@@ -38,16 +38,11 @@ class PaymentRequestBuilder extends GroupHeaderBuilder
         return $xml;
     }
 
-    private function makePaymentRequestTag(): PaymentRequestTag
+    private function makePaymentRequest(): PaymentRequest
     {
-        return PaymentRequestTag::make()
+        return PaymentRequest::make()
             ->setGroupHeader($this->makeGroupHeader())
-            ->setPaymentInstruction($this->makePaymentInstruction());
-    }
-
-    private function makePaymentInstruction(): PaymentInstructionTag
-    {
-        return PaymentInstructionTag::make(); // TODO
+            ->setPaymentInstruction($this->paymentInstruction);
     }
     
 }

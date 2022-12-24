@@ -3,6 +3,8 @@ namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
 use Condividendo\LaravelCBI\Tags\Tag;
+use Condividendo\LaravelCBI\Tags\GroupHeader;
+use Condividendo\LaravelCBI\Tags\PaymentInstruction;
 use DOMDocument;
 use DOMElement;
 
@@ -16,9 +18,9 @@ class PaymentRequest extends Tag
     private $groupHeader;
 
     /**
-     * @var \Condividendo\LaravelCBI\Tags\PaymentInfoTag
+     * @var \Condividendo\LaravelCBI\Tags\PaymentInstruction
      */
-    private $paymentInfoTag;    
+    private $paymentInstruction;    
 
     public function setGroupHeader(GroupHeader $groupHeader): self
     {
@@ -27,9 +29,9 @@ class PaymentRequest extends Tag
         return $this;
     }
 
-    public function setPaymentInfoTag(PaymentInfoTag $paymentInfoTag): self
+    public function setPaymentInstruction(PaymentInstruction $paymentInstruction): self
     {
-        $this->paymentInfoTag = $paymentInfoTag;
+        $this->paymentInstruction = $paymentInstruction;
 
         return $this;
     }
@@ -42,7 +44,7 @@ class PaymentRequest extends Tag
         $e = $dom->createElement('CBIPaymentRequest');
 
         $e->appendChild($this->groupHeader->toDOMElement($dom));
-        $e->appendChild($this->paymentInfoTag->toDOMElement($dom));
+        $e->appendChild($this->paymentInstruction->toDOMElement($dom));
         
         return $e;
     }

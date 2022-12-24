@@ -3,7 +3,7 @@ namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
 use Condividendo\LaravelCBI\Tags\Name;
-use Condividendo\LaravelCBI\Tags\Id;
+use Condividendo\LaravelCBI\Tags\InitiatingPartyId;
 use DOMDocument;
 use DOMElement;
 
