@@ -2,6 +2,7 @@
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
+use Condividendo\LaravelCBI\Tags\Tag;
 use DOMDocument;
 use DOMElement;
 

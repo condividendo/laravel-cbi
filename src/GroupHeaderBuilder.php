@@ -5,7 +5,7 @@ namespace Condividendo\LaravelCBI;
 use Condividendo\LaravelCBI\Entities\InitiatingParty;
 use Condividendo\LaravelCBI\Tags\GroupHeader as GroupHeaderTag;
 
-class PaymentRequestBuilder
+class GroupHeaderBuilder
 {
     /**
      * @var string
