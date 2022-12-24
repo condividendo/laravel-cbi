@@ -34,26 +34,16 @@ use Illuminate\Support\Facades\Date;
 use DOMDocument;
 use SimpleXMLElement;
 
-class PaymentRequestBuilder
+class PaymentRequestBuilder extends GroupHeaderBuilder
 {
-    /**
-     * @var string
-     */
-    private $messageId;
-    
-    /**
-     * @var array<\Condividendo\LaravelCBI\Entities\InitiatingParty>
-     */
-    private $initiatingParty;
-
     /**
      * @var array<\Condividendo\LaravelCBI\PaymentRequest\Entities\PaymentInstruction>
      */
     private $paymentInstruction;
 
-    public function setInitiatingParty(InitiatingParty $initiatingParty): self
+    public function setPaymentInstruction(PaymentInstruction $paymentInstruction): self
     {
-        $this->initiatingParty = $initiatingParty;
+        $this->paymentInstruction = $paymentInstruction;
 
         return $this;
     }
@@ -79,12 +69,6 @@ class PaymentRequestBuilder
         return PaymentRequestTag::make()
             ->setGroupHeader($this->makeGroupHeader())
             ->setPaymentInfo($this->makePaymentInfo());
-    }
-
-    private function makeGroupHeader(): GroupHeaderTag
-    {
-        return GroupHeaderTag::make()->setMessageId($this->messageId)
-            ->setInitiatingParty($this->initiatingParty->getTag());
     }
 
     private function makePaymentInfo(): PaymentInfoTag
