@@ -117,6 +117,9 @@ use Illuminate\Support\Facades\Date;
 
 $sdd = CBI::paymentRequest()
     ->setMessageId('1')
+    ->setNumberOfTxs(1)
+    ->setCreditTime(date("Y-m-d H:i"))
+    ->setControlSum("100")
     ->setInitiatingParty(
         InitiatingParty::make()
             ->setName('Condividendo Italia s.r.l.')
@@ -139,6 +142,7 @@ $sdd = CBI::paymentRequest()
                 FinancialInstitution::make()
                     ->setClearingSystemMemberId('01234')
             )
+            ->setCommissionPayer(CommissionPayer::SLEV())
             ->addCreditTransferTransactionInformation(
                 CreditTransferTransactionInformation::make()
                     ->setPaymentId(

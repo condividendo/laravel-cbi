@@ -4,7 +4,7 @@ namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\GroupHeader;
-use Condividendo\LaravelCBI\Tags\PaymentInstruction;
+use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentInstruction;
 use DOMDocument;
 use DOMElement;
 

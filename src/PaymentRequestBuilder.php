@@ -11,7 +11,7 @@ use SimpleXMLElement;
 class PaymentRequestBuilder extends GroupHeaderBuilder
 {
     /**
-     * @var array<\Condividendo\LaravelCBI\PaymentRequest\Tags\PaymentInstruction>
+     * @var array<\Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentInstruction>
      */
     private $paymentInstruction;
 

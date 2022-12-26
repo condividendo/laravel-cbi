@@ -5,8 +5,8 @@
         "ext-dom": "*",
         "ext-simplexml": "*",
         "brick/money": "^0.5.3",
-        "illuminate/support": "5.8.*",
-        "bensampo/laravel-enum": "1.*"
+        "bensampo/laravel-enum": "1.*",
+        "illuminate/support": "5.8.*"
     },
     "require-dev": {
         "orchestra/testbench": "^3.8",

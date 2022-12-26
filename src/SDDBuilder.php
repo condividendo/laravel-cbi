@@ -1,5 +1,4 @@
 <?php
-
 namespace Condividendo\LaravelCBI;
 
 use Condividendo\LaravelCBI\Entities\CreditTransferTransactionInformation;
@@ -36,7 +35,7 @@ class SDDBuilder
     private $initiatingParty;
 
     /**
-     * @var array<\Condividendo\LaravelCBI\PaymentRequest\Entities\PaymentInstruction>
+     * @var array<\Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentInstruction>
      */
     private $paymentInstruction;
 

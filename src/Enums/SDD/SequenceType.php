@@ -1,6 +1,5 @@
 <?php
-
-namespace Condividendo\LaravelCBI\SDD\Enums;
+namespace Condividendo\LaravelCBI\Enums\SDD;
 
 use BenSampo\Enum\Enum;
 
