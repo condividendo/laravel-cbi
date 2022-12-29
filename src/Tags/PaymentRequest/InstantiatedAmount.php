@@ -6,26 +6,28 @@ use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PaymentInstructionId extends Tag
+class InstantiatedAmount extends Tag
 {
     use Makeable;
 
     /**
      * @var string
      */
-    private $id;  
-
-    public function setPaymentInstructionId(string $id): self
+    private $amount;
+        
+    public function setAmount(string $amount): self
     {
-        $this->id = $id;
+        $this->amount = $amount;
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('PmtInfId',$this->id);
+        $e = $dom->createElement('InstdAmt', $this->amount);
+        $e->setAttribute("Ccy", "EUR");
+        return $e;
     }
 }

@@ -93,7 +93,7 @@ class PaymentInstruction extends Tag
 
     public function setDebtor(PartyIdentification $debtor): self
     {
-        $this->debtor = $debtor;
+        $this->debtor = $debtor->setAsDebtorOrCreditor(true);
         return $this;
     }
 

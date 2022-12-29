@@ -7,28 +7,30 @@ use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class DebtorAccount extends Tag
+class CreditorAccount extends Tag
 {
     use Makeable;
 
     /**
      * @var Id
      */
-    private $debtorId;
-
-    public function setDebtorAccount(string $account): self
+    private $creditorId;
+        
+    public function setCreditorAccount(string $iban): self
     {
-        $this->debtorId = Id::make()->setAccount($account);
+        $this->creditorId = Id::make()->setAccount($iban);
         return $this;
-    }  
-
+    }
+    
+    
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('DbtrAcct');
-        $e->appendChild($this->debtorId->toDOMElement($dom));
+        $e = $dom->createElement('CdtrAcct');
+        $e->appendChild($this->creditorId->toDOMElement($dom));
         return $e;
     }
+
 }

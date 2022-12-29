@@ -6,26 +6,26 @@ use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PaymentInstructionId extends Tag
+class Unstructured extends Tag
 {
     use Makeable;
 
     /**
      * @var string
      */
-    private $id;  
-
-    public function setPaymentInstructionId(string $id): self
+    private $unstructured;
+    
+    public function setUnstructured(string $unstructured): self
     {
-        $this->id = $id;
+        $this->unstructured = $this->setUnstructured($unstructured);
         return $this;
-    }    
-
+    }
+    
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('PmtInfId',$this->id);
+        return $dom->createElement('Ustrd',$this->unstructured);
     }
 }

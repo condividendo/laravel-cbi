@@ -2,33 +2,30 @@
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\Iban;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class DebtorId extends Tag
+class EndToEndId extends Tag
 {
     use Makeable;
 
     /**
-     * @var Iban
+     * @var string
      */
-    private $iban;
-
-    public function setAccount(string $iban): self
+    private $endToEndId;
+    
+    public function setEndToEndId(string $endToEndId): self
     {
-        $this->iban = Iban::make()->setAccount($iban);
+        $this->endToEndId = $endToEndId;
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('Id');
-        $e->appendChild($this->iban->toDOMElement($dom));
-        return $e;
+        return $dom->createElement('EndToEndId', $this->endToEndId);
     }
 }

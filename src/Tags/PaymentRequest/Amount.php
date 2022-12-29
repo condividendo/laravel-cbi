@@ -2,33 +2,33 @@
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\Id;
+use Condividendo\LaravelCBI\Tags\PaymentRequest\InstantiatedAmount;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class DebtorAccount extends Tag
+class Amount extends Tag
 {
     use Makeable;
 
     /**
-     * @var Id
+     * @var InstantiatedAmount
      */
-    private $debtorId;
-
-    public function setDebtorAccount(string $account): self
+    private $amount;
+        
+    public function setAmount(string $amount): self
     {
-        $this->debtorId = Id::make()->setAccount($account);
+        $this->amount = InstantiatedAmount::make()->setAmount($amount);
         return $this;
-    }  
-
+    }
+        
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('DbtrAcct');
-        $e->appendChild($this->debtorId->toDOMElement($dom));
+        $e = $dom->createElement('Amt');
+        $e->appendChild($this->amount->toDOMElement($dom));
         return $e;
     }
 }

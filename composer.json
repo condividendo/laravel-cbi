@@ -1,7 +1,7 @@
 {
     "name": "condividendo/laravel-cbi",
     "require": {
-        "php": "^7.2",
+        "php": "^7.1",
         "ext-dom": "*",
         "ext-simplexml": "*",
         "brick/money": "^0.5.3",
@@ -10,7 +10,7 @@
     },
     "require-dev": {
         "orchestra/testbench": "^3.8",
-        "phpstan/phpstan": "1.7.6"
+        "phpstan/phpstan": "1.4.*"
     },
     "autoload": {
         "psr-4": {

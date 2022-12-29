@@ -2,30 +2,33 @@
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
+use Condividendo\LaravelCBI\Tags\PaymentRequest\Iban;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PaymentInstructionId extends Tag
+class Id extends Tag
 {
     use Makeable;
 
     /**
-     * @var string
+     * @var Iban
      */
-    private $id;  
+    private $iban;
 
-    public function setPaymentInstructionId(string $id): self
+    public function setAccount(string $iban): self
     {
-        $this->id = $id;
+        $this->iban = Iban::make()->setAccount($iban);
         return $this;
-    }    
+    }  
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('PmtInfId',$this->id);
+        $e = $dom->createElement('Id');
+        $e->appendChild($this->iban->toDOMElement($dom));
+        return $e;
     }
 }

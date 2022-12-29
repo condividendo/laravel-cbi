@@ -6,26 +6,26 @@ use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PaymentInstructionId extends Tag
+class StreetName extends Tag
 {
     use Makeable;
 
     /**
      * @var string
      */
-    private $id;  
+    private $streetName;
 
-    public function setPaymentInstructionId(string $id): self
+    public function setStreetName(string $streetName): self
     {
-        $this->id = $id;
+        $this->streetName = $streetName;
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('PmtInfId',$this->id);
+        return $dom->createElement('StrtNm', $this->streetName);
     }
 }

@@ -6,26 +6,26 @@ use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PaymentInstructionId extends Tag
+class AddressType extends Tag
 {
     use Makeable;
 
     /**
-     * @var string
+     * @var \Condividendo\LaravelCBI\Enums\PaymentRequest\AddressType
      */
-    private $id;  
+    private $addressType;
 
-    public function setPaymentInstructionId(string $id): self
+    public function setAddressType(\Condividendo\LaravelCBI\Enums\PaymentRequest\AddressType $addressType): self
     {
-        $this->id = $id;
+        $this->addressType = $addressType;
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('PmtInfId',$this->id);
+        return $dom->createElement('AdrTp', $this->addressType->value);
     }
 }

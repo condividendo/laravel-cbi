@@ -11,14 +11,13 @@ class BatchBooking extends Tag
     use Makeable;
 
     /**
-     * @var string
+     * @var bool
      */
     private $batchBooking;  
 
-    public function setBatchBooking(string $batchBooking): self
+    public function setBatchBooking(bool $batchBooking): self
     {
         $this->batchBooking = $batchBooking;
-
         return $this;
     }    
 
@@ -27,6 +26,6 @@ class BatchBooking extends Tag
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('BtchBookg',$this->batchBooking);
+        return $dom->createElement('BtchBookg',$this->batchBooking ? "true" : "false");
     }
 }

@@ -6,26 +6,26 @@ use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PaymentInstructionId extends Tag
+class Country extends Tag
 {
     use Makeable;
 
     /**
      * @var string
      */
-    private $id;  
+    private $country;
 
-    public function setPaymentInstructionId(string $id): self
+    public function setCountry(string $country): self
     {
-        $this->id = $id;
+        $this->country = $country;
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('PmtInfId',$this->id);
+        return $dom->createElement('Ctry', $this->country);
     }
 }

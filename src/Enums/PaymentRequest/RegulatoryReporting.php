@@ -1,5 +1,5 @@
 <?php
-namespace Condividendo\LaravelCBI\Enums\SDD;
+namespace Condividendo\LaravelCBI\Enums\PaymentRequest;
 
 use BenSampo\Enum\Enum;
 
