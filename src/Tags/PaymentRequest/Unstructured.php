@@ -17,7 +17,7 @@ class Unstructured extends Tag
     
     public function setUnstructured(string $unstructured): self
     {
-        $this->unstructured = $this->setUnstructured($unstructured);
+        $this->unstructured = $unstructured;
         return $this;
     }
     
