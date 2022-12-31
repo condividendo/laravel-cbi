@@ -114,6 +114,7 @@ use Condividendo\LaravelCBI\Entities\CreditTransferTransactionInformation;
 use Condividendo\LaravelCBI\Entities\FinancialInstitution;
 use Condividendo\LaravelCBI\Entities\InitiatingParty;
 use Condividendo\LaravelCBI\Entities\PartyIdentification;
+use Condividendo\LaravelCBI\Entities\PaymentTypeInfo;
 use Condividendo\LaravelCBI\Entities\PaymentId;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentInstruction;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentTypeInformation;
@@ -147,8 +148,11 @@ class PaymentReqExample
                 PaymentInstruction::make()
                     ->setId('1')
                     ->setPaymentMethod(PaymentMethod::TRA())
-                    ->setPaymentPriority(PaymentPriority::NORM())
-                    ->setServiceLevel(ServiceLevel::SEPA())
+                    ->setPaymentTypeInfo(
+                        PaymentTypeInfo::make()
+                            ->setPaymentPriority(PaymentPriority::NORM())
+                            ->setServiceLevel(ServiceLevel::SEPA())
+                    )
                     ->setCommissionPayer(CommissionPayer::SLEV())
                     ->setRequiredExecutionDate(Date::createFromDate(2022, 1, 1))
                     ->setDebtor(

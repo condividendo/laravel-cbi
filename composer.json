@@ -33,6 +33,6 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": false
     }
 }
