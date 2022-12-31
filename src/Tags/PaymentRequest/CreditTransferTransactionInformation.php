@@ -2,12 +2,12 @@
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
+use Condividendo\LaravelCBI\Tags\PartyIdentification;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditorAccount;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\Amount;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentId;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentTypeInformation;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PartyIdentification;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\RemittanceInformation;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;

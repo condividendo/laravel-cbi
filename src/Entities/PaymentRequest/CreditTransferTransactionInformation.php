@@ -2,14 +2,14 @@
 namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
 
 use Condividendo\LaravelCBI\Entities\Entity;
+use Condividendo\LaravelCBI\Entities\PartyIdentification;
+use Condividendo\LaravelCBI\Tags\PartyIdentification as PartyIdentificationTag;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentId;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentTypeInformation;
-use Condividendo\LaravelCBI\Entities\PaymentRequest\PartyIdentification;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\RemittanceInformation;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation as CreditTransferTransactionInformationTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentId as PaymentIdTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentTypeInformation as PaymentTypeInformationTag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PartyIdentification as PartyIdentificationTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\RemittanceInformation as RemittanceInformationTag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use RuntimeException;
@@ -72,7 +72,7 @@ class CreditTransferTransactionInformation extends Entity
         return $this;
     }  
     
-    public function setCreditor(PartyIdentificationTag $partyIdentification): self
+    public function setCreditor(PartyIdentification $partyIdentification): self
     {
         $this->partyIdentification = $partyIdentification->getTag();
         return $this;

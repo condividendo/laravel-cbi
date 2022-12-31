@@ -1,9 +1,9 @@
 <?php
-namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
+namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Entities\Entity;
-use Condividendo\LaravelCBI\Enums\PaymentRequest\AddressType;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PostalAddress as PostalAddressTag;
+use Condividendo\LaravelCBI\Enums\AddressType;
+use Condividendo\LaravelCBI\Tags\PostalAddress as PostalAddressTag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use RuntimeException;
 

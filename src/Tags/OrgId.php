@@ -1,6 +1,7 @@
 <?php
 namespace Condividendo\LaravelCBI\Tags;
 
+use Condividendo\LaravelCBI\Enums\OrgIdType;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use Condividendo\LaravelCBI\Tags\Other;
 use DOMDocument;
@@ -15,7 +16,7 @@ class OrgId extends Tag
      */
     private $other;
 
-    public function setId(string $id,string $issr): self
+    public function setId(string $id, OrgIdType $issr): self
     {
         $this->other = Other::make()->setId($id)->setIssr($issr);
 

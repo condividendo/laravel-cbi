@@ -1,6 +1,7 @@
 <?php
 namespace Condividendo\LaravelCBI\Tags;
 
+use Condividendo\LaravelCBI\Enums\OrgIdType;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
@@ -10,11 +11,11 @@ class Issr extends Tag
     use Makeable;
 
     /**
-     * @var string
+     * @var OrgIdType
      */
     private $issr;  
 
-    public function setIssr(string $issr): self
+    public function setIssr(OrgIdType $issr): self
     {
         $this->issr = $issr;
 
@@ -26,6 +27,6 @@ class Issr extends Tag
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('Issr',$this->issr);
+        return $dom->createElement('Issr',$this->issr->value);
     }
 }

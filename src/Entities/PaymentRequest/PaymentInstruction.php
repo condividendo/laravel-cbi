@@ -2,18 +2,18 @@
 namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
 
 use Condividendo\LaravelCBI\Entities\Entity;
+use Condividendo\LaravelCBI\Entities\PartyIdentification;
+use Condividendo\LaravelCBI\Entities\PaymentRequest\CreditTransferTransactionInformation;
+use Condividendo\LaravelCBI\Entities\PaymentRequest\FinancialInstitution;
+use Condividendo\LaravelCBI\Entities\PaymentTypeInfo;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentMethod;
-use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority;
-use Condividendo\LaravelCBI\Enums\ServiceLevel;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer;
+use Condividendo\LaravelCBI\Tags\PartyIdentification as PartyIdentificationTag;
+use Condividendo\LaravelCBI\Tags\PaymentTypeInfo as PaymentTypeInfoTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentInstruction as PaymentInstructionTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation as CreditTransferTransactionInformationTag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PartyIdentification as PartyIdentificationTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\FinancialInstitution as FinancialInstitutionTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\ExecutingBank;
-use Condividendo\LaravelCBI\Entities\PaymentRequest\CreditTransferTransactionInformation;
-use Condividendo\LaravelCBI\Entities\PaymentRequest\PartyIdentification;
-use Condividendo\LaravelCBI\Entities\PaymentRequest\FinancialInstitution;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use RuntimeException;
 
@@ -32,14 +32,9 @@ class PaymentInstruction extends Entity
     private $paymentMethod;
 
     /**
-     * @var PaymentPriority
+     * @var PaymentTypeInfoTag
      */
-    private $paymentPriority;
-
-    /**
-     * @var ServiceLevel
-     */
-    private $serviceLevel;
+    private $paymentTypeInfo;
 
     /**
      * @var CommissionPayer
@@ -90,7 +85,7 @@ class PaymentInstruction extends Entity
 
     public function setDebtor(PartyIdentification $debtor): self
     {
-        $this->debtor = PartyIdentificationTag::make()->setDebtor($debtor);
+        $this->debtor = $debtor->getTag();
         return $this;
     }
 
@@ -118,15 +113,9 @@ class PaymentInstruction extends Entity
         return $this;
     }
     
-    public function setPaymentPriority(PaymentPriority $paymentPriority): self
+    public function setPaymentTypeInfo(PaymentTypeInfo $paymentTypeInfo): self
     {
-        $this->paymentPriority = $paymentPriority;
-        return $this;
-    }
-    
-    public function setServiceLevel(ServiceLevel $serviceLevel): self
-    {
-        $this->serviceLevel = $serviceLevel;
+        $this->paymentTypeInfo = $paymentTypeInfo->getTag();
         return $this;
     }
     
@@ -147,18 +136,16 @@ class PaymentInstruction extends Entity
         $tag = PaymentInstructionTag::make()
                 ->setId($this->id)
                 ->setCommissionPayer($this->commissionPayer)
-                ->setServiceLevel($this->serviceLevel)
-                ->setPaymentPriority($this->paymentPriority)
+                ->setPaymentTypeInfo($this->paymentTypeInfo)
                 ->setPaymentMethod($this->paymentMethod)
                 ->setExecutingBank($this->executingBank)
                 ->setDebtor($this->debtor)
                 ->setDebtorAccount($this->debtorAccount)
                 ->setRequiredExecutionDate($this->requiredExecutionDate)
-                ->setBatchBooking($this->batchBooking);
+                ->setBatchBooking($this->batchBooking ? true : false);
         foreach($this->creditTransferTransactionInformation as $info){
             $tag->addCreditTransferTransactionInformation($info);
         }
         return $tag;
     }
-
 }

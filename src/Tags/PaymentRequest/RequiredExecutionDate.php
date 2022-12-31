@@ -19,7 +19,7 @@ class RequiredExecutionDate extends Tag
 
     public function setRequiredExecutionDate(string $requiredExecutionDate): self
     {
-        $this->requiredExecutionDate = $this->makeDate($requiredExecutionDate);
+        $this->requiredExecutionDate = $this->makeDate($requiredExecutionDate)->toDateString();
         return $this;
     }    
 

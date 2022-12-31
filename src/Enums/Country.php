@@ -1,6 +1,6 @@
 <?php
 
-namespace Condividendo\LaravelCBI\Enums\PaymentRequest;
+namespace Condividendo\LaravelCBI\Enums;
 
 use BenSampo\Enum\Enum;
 
@@ -11,7 +11,7 @@ use BenSampo\Enum\Enum;
  * @method static self VA() Vatican
  * 
  */
-final class CountryCode extends Enum
+final class Country extends Enum
 {
     public const IT = 'IT';
     public const RSM = 'RSM';

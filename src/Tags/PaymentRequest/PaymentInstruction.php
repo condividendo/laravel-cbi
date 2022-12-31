@@ -6,16 +6,16 @@ use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority;
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer;
 use Condividendo\LaravelCBI\Tags\Tag;
+use Condividendo\LaravelCBI\Tags\PartyIdentification;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentInstructionId;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\BatchBooking;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\RequiredExecutionDate;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentMethod as PaymentMethodTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\CommissionPayer as CommissionPayerTag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PartyIdentification;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\DebtorAccount;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\ExecutingBank;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentTypeInfo;
+use Condividendo\LaravelCBI\Tags\PaymentTypeInfo;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
@@ -35,14 +35,9 @@ class PaymentInstruction extends Tag
     private $paymentMethod;
 
     /**
-     * @var PaymentPriority
+     * @var PaymentTypeInfo
      */
-    private $paymentPriority;
-
-    /**
-     * @var ServiceLevel
-     */
-    private $serviceLevel;
+    private $paymentTypeInfo;
 
     /**
      * @var CommissionPayerTag
@@ -121,15 +116,9 @@ class PaymentInstruction extends Tag
         return $this;
     }
     
-    public function setPaymentPriority(PaymentPriority $paymentPriority): self
+    public function setPaymentTypeInfo(PaymentTypeInfo $paymentTypeInfo): self
     {
-        $this->paymentPriority = $paymentPriority;
-        return $this;
-    }
-    
-    public function setServiceLevel(ServiceLevel $serviceLevel): self
-    {
-        $this->serviceLevel = $serviceLevel;
+        $this->paymentTypeInfo = $paymentTypeInfo;
         return $this;
     }
     
@@ -154,10 +143,8 @@ class PaymentInstruction extends Tag
 
         $e->appendChild($this->id->toDOMElement($dom));
         $e->appendChild($this->paymentMethod->toDOMElement($dom));
-        $e->appendChild($this->batchBooking->toDOMElement($dom));
-        $e->appendChild(PaymentTypeInfo::make()
-                        ->setPaymentPriority($this->paymentPriority)
-                        ->setServiceLevel($this->serviceLevel));
+        $e->appendChild($this->batchBooking->toDOMElement($dom));        
+        $e->appendChild($this->paymentTypeInfo->toDOMElement($dom));
         $e->appendChild($this->requiredExecutionDate->toDOMElement($dom));
         $e->appendChild($this->debtor->toDOMElement($dom));
         $e->appendChild($this->debtorAccount->toDOMElement($dom));

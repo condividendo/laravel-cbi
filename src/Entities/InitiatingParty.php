@@ -1,6 +1,7 @@
 <?php
 namespace Condividendo\LaravelCBI\Entities;
 
+use Condividendo\LaravelCBI\Enums\OrgIdType;
 use Condividendo\LaravelCBI\Tags\InitiatingParty as InitiatingPartyTag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use RuntimeException;
@@ -20,7 +21,7 @@ class InitiatingParty extends Entity
     private $id;
 
     /**
-     * @var string
+     * @var OrgIdType
      */
     private $issr;
     
@@ -31,7 +32,7 @@ class InitiatingParty extends Entity
         return $this;
     }
 
-    public function setId(string $id, string $issr): self
+    public function setId(string $id, OrgIdType $issr): self
     {
         $this->id = $id;
         $this->issr = $issr;

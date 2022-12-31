@@ -41,7 +41,10 @@ class PaymentRequest extends Tag
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('CBIPaymentRequest');
+        $e = $dom->createElementNS(
+            'urn:CBI:xsd:CBIPaymentRequest.00.04.00',
+            'CBIPaymentRequest'
+        );
 
         $e->appendChild($this->groupHeader->toDOMElement($dom));
         $e->appendChild($this->paymentInstruction->toDOMElement($dom));

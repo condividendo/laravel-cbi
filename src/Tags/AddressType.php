@@ -1,5 +1,5 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -11,11 +11,11 @@ class AddressType extends Tag
     use Makeable;
 
     /**
-     * @var \Condividendo\LaravelCBI\Enums\PaymentRequest\AddressType
+     * @var \Condividendo\LaravelCBI\Enums\AddressType
      */
     private $addressType;
 
-    public function setAddressType(\Condividendo\LaravelCBI\Enums\PaymentRequest\AddressType $addressType): self
+    public function setAddressType(\Condividendo\LaravelCBI\Enums\AddressType $addressType): self
     {
         $this->addressType = $addressType;
         return $this;

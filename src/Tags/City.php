@@ -1,23 +1,23 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Country extends Tag
+class City extends Tag
 {
     use Makeable;
 
     /**
      * @var string
      */
-    private $country;
+    private $city;
 
-    public function setCountry(string $country): self
+    public function setCity(string $city): self
     {
-        $this->country = $country;
+        $this->city = $city;
         return $this;
     }
 
@@ -26,6 +26,6 @@ class Country extends Tag
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('Ctry', $this->country);
+        return $dom->createElement('TwnNm', $this->city);
     }
 }

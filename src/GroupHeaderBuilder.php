@@ -3,6 +3,7 @@
 namespace Condividendo\LaravelCBI;
 
 use Condividendo\LaravelCBI\Entities\InitiatingParty;
+use Condividendo\LaravelCBI\Tags\InitiatingParty as InitiatingPartyTag; 
 use Condividendo\LaravelCBI\Tags\GroupHeader as GroupHeaderTag;
 
 class GroupHeaderBuilder
@@ -28,7 +29,7 @@ class GroupHeaderBuilder
     protected $ctrlSum;
     
     /**
-     * @var array<\Condividendo\LaravelCBI\Tags\InitiatingParty>
+     * @var InitiatingPartyTag
      */
     protected $initiatingParty;
 
@@ -73,7 +74,7 @@ class GroupHeaderBuilder
             ->setNumberOfTxs($this->numberOfTxs)
             ->setCreditTime($this->creditTime)
             ->setControlSum($this->ctrlSum)
-            ->setInitiatingParty($this->initiatingParty->getTag());
+            ->setInitiatingParty($this->initiatingParty);
     }    
     
 }

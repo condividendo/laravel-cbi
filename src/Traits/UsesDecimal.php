@@ -12,6 +12,6 @@ trait UsesDecimal
     protected static function makeDecimal($value): BigDecimal
     {
         /** @phpstan-ignore-next-line */
-        return BigDecimal::of($value);
+        return BigDecimal::of($value)->toScale(2);
     }
 }

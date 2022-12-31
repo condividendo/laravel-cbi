@@ -1,7 +1,8 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
+use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority;
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentPriority as PaymentPriorityTag;
 use Condividendo\LaravelCBI\Tags\ServiceLevel as ServiceLevelTag;

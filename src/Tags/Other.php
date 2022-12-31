@@ -1,6 +1,7 @@
 <?php
 namespace Condividendo\LaravelCBI\Tags;
 
+use Condividendo\LaravelCBI\Enums\OrgIdType;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use Condividendo\LaravelCBI\Tags\Issr;
 use Condividendo\LaravelCBI\Tags\Id;
@@ -21,7 +22,7 @@ class Other extends Tag
      */
     private $id;
     
-    public function setIssr(string $issr): self
+    public function setIssr(OrgIdType $issr): self
     {
         $this->issr = Issr::make()->setIssr($issr);
 

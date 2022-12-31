@@ -1,7 +1,6 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags;
 
-use Condividendo\LaravelCBI\Enums\PaymentRequest\AddressType;
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\Name;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PostalAddress;

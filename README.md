@@ -31,68 +31,78 @@ use Condividendo\LaravelCBI\Enums\LocalInstrument;
 use Condividendo\LaravelCBI\Enums\SDD\PaymentMethod;
 use Condividendo\LaravelCBI\Enums\SequenceType;
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
+use Condividendo\LaravelCBI\Enums\OrgIdType;
+use Condividendo\LaravelCBI\Traits\UsesDecimal;
 use Illuminate\Support\Facades\Date;
 
-$sdd = CBI::sdd()
-    ->setMessageId('1')
-    ->setInitiatingParty(
-        InitiatingParty::make()
-            ->setName('Condividendo Italia s.r.l.')
-            ->setId('12345678', 'CBI')
-    )
-    ->addPaymentInstruction(
-        PaymentInstruction::make()
-            ->setId('1')
-            ->setPaymentMethod(PaymentMethod::DD())
-            ->setPaymentTypeInformation(
-                PaymentTypeInformation::make()
-                    ->setServiceLevel(ServiceLevel::SEPA())
-                    ->setLocalInstrument(LocalInstrument::B2B())
-                    ->setSequenceType(SequenceType::RCUR())
-            )
-            ->setRequiredCollectionDate(Date::createFromDate(2022, 1, 1))
-            ->setCreditor(
-                PartyIdentification::make()
+class SDDExample
+{
+    use UsesDecimal; 
+
+    function makeSdd(){
+
+        $sdd = CBI::sdd()
+            ->setMessageId('1')
+            ->setInitiatingParty(
+                InitiatingParty::make()
                     ->setName('Condividendo Italia s.r.l.')
+                    ->setId('12345678', OrgIdType::CBI())
             )
-            ->setCreditorAccount('IT60X0542811101000000123456')
-            ->setExecutingBank(
-                FinancialInstitution::make()
-                    ->setClearingSystemMemberId('01234')
-            )
-            ->setCreditorSchemeId(
-                PartyIdentification::make()
-                    ->setName('Condividendo Italia s.r.l.')
-                    ->setId('IT210010000000123456789')
-            )
-            ->addDirectDebitTransactionInformation(
-                DirectDebitTransactionInformation::make()
-                    ->setPaymentId(
-                        PaymentId::make()
-                            ->setInstructionId('1')
-                            ->setEndToEndId('1.1')
+            ->addPaymentInstruction(
+                PaymentInstruction::make()
+                    ->setId('1')
+                    ->setPaymentMethod(PaymentMethod::DD())
+                    ->setPaymentTypeInformation(
+                        PaymentTypeInformation::make()
+                            ->setServiceLevel(ServiceLevel::SEPA())
+                            ->setLocalInstrument(LocalInstrument::B2B())
+                            ->setSequenceType(SequenceType::RCUR())
                     )
-                    ->setAmount(Money::of(100, 'EUR'))
-                    ->setDirectDebitTransaction(
-                        DirectDebitTransaction::make()
-                            ->setMandateRelatedInformation(
-                                MandateRelatedInformation::make()
-                                    ->setMandateId('012345')
-                                    ->setDateOfSignature(Date::createFromDate(2022, 1, 1))
-                            )
-                    )
-                    ->setDebtor(
+                    ->setRequiredCollectionDate(Date::createFromDate(2022, 1, 1))
+                    ->setCreditor(
                         PartyIdentification::make()
-                            ->setName('Pinco Pallino')
+                            ->setName('Condividendo Italia s.r.l.')
                     )
-                    ->setDebtorAccount('IT60X0542811101000000123456')
-            )
-    );
+                    ->setCreditorAccount('IT60X0542811101000000123456')
+                    ->setExecutingBank(
+                        FinancialInstitution::make()
+                            ->setClearingSystemMemberId('01234')
+                    )
+                    ->setCreditorSchemeId(
+                        PartyIdentification::make()
+                            ->setName('Condividendo Italia s.r.l.')
+                            ->setId('IT210010000000123456789')
+                    )
+                    ->addDirectDebitTransactionInformation(
+                        DirectDebitTransactionInformation::make()
+                            ->setPaymentId(
+                                PaymentId::make()
+                                    ->setInstructionId('1')
+                                    ->setEndToEndId('1.1')
+                            )
+                            ->setAmount(Money::of(100, 'EUR'))
+                            ->setDirectDebitTransaction(
+                                DirectDebitTransaction::make()
+                                    ->setMandateRelatedInformation(
+                                        MandateRelatedInformation::make()
+                                            ->setMandateId('012345')
+                                            ->setDateOfSignature(Date::createFromDate(2022, 1, 1))
+                                    )
+                            )
+                            ->setDebtor(
+                                PartyIdentification::make()
+                                    ->setName('Pinco Pallino')
+                            )
+                            ->setDebtorAccount('IT60X0542811101000000123456')
+                    )
+            );
 
-/** @var \SimpleXMLElement $xml */
-$xml = $sdd->toXML();
+        /** @var \SimpleXMLElement $xml */
+        $xml = $sdd->toXML();
 
-// do whatever you want with $xml variable...
+        // do whatever you want with $xml variable...
+    }
+}
 ```
 
 ### Payment Request
@@ -113,64 +123,73 @@ use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentMethod;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer;
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
+use Condividendo\LaravelCBI\Enums\OrgIdType;
+use Condividendo\LaravelCBI\Traits\UsesDecimal;
 use Illuminate\Support\Facades\Date;
 
-$sdd = CBI::paymentRequest()
-    ->setMessageId('1')
-    ->setNumberOfTxs(1)
-    ->setCreditTime(date("Y-m-d H:i"))
-    ->setControlSum("100")
-    ->setInitiatingParty(
-        InitiatingParty::make()
-            ->setName('Condividendo Italia s.r.l.')
-            ->setId('12345678', 'CBI')
-    )
-    ->setPaymentInstruction(
-        PaymentInstruction::make()
-            ->setId('1')
-            ->setPaymentMethod(PaymentMethod::TRA())
-            ->setPaymentPriority(PaymentPriority::NORM())
-            ->setServiceLevel(ServiceLevel::SEPA())
-            ->setCommissionPayer(CommissionPayer::SLEV())
-            ->setRequiredExecutionDate(Date::createFromDate(2022, 1, 1))
-            ->setDebtor(
-                PartyIdentification::make()
+class PaymentReqExample
+{
+    use UsesDecimal; 
+
+    function makePaymentReq(){
+
+        $sdd = CBI::paymentRequest()
+            ->setMessageId('1')
+            ->setNumberOfTxs(1)
+            ->setCreditTime(date("Y-m-d H:i"))
+            ->setControlSum("100")
+            ->setInitiatingParty(
+                InitiatingParty::make()
                     ->setName('Condividendo Italia s.r.l.')
-            )            
-            ->setDebtorAccount('IT60X0542811101000000123456')
-            ->setExecutingBank(
-                FinancialInstitution::make()
-                    ->setClearingSystemMemberId('01234')
+                    ->setId('12345678', OrgIdType::CBI())
             )
-            ->setCommissionPayer(CommissionPayer::SLEV())
-            ->addCreditTransferTransactionInformation(
-                CreditTransferTransactionInformation::make()
-                    ->setPaymentId(
-                        PaymentId::make()
-                            ->setInstructionId('1')
-                            ->setEndToEndId('1.1')
-                    )
-                    ->setPaymentTypeInformation(
-                        PaymentTypeInformation::make()
-                            ->setCategoryPurpose(CategoryPurpose::SUPP())
-                    )
-                    ->setAmount(Money::of(100, 'EUR'))
-                    ->setCreditor(
+            ->setPaymentInstruction(
+                PaymentInstruction::make()
+                    ->setId('1')
+                    ->setPaymentMethod(PaymentMethod::TRA())
+                    ->setPaymentPriority(PaymentPriority::NORM())
+                    ->setServiceLevel(ServiceLevel::SEPA())
+                    ->setCommissionPayer(CommissionPayer::SLEV())
+                    ->setRequiredExecutionDate(Date::createFromDate(2022, 1, 1))
+                    ->setDebtor(
                         PartyIdentification::make()
-                            ->setName('Pinco Pallino')
+                            ->setName('Condividendo Italia s.r.l.')
+                    )            
+                    ->setDebtorAccount('IT60X0542811101000000123456')
+                    ->setExecutingBank(
+                        FinancialInstitution::make()
+                            ->setClearingSystemMemberId('01234')
                     )
-                    ->setCreditorAccount('IT60X0542811101000000123456')
-                    ->setRemittanceInformation(
-                        RemittanceInformation::make()
-                            ->setUnstructured('Abcd 123')
+                    ->addCreditTransferTransactionInformation(
+                        CreditTransferTransactionInformation::make()
+                            ->setPaymentId(
+                                PaymentId::make()
+                                    ->setInstructionId('1')
+                                    ->setEndToEndId('1.1')
+                            )
+                            ->setPaymentTypeInformation(
+                                PaymentTypeInformation::make()
+                                    ->setCategoryPurpose(CategoryPurpose::SUPP())
+                            )
+                            ->setAmount(self::makeDecimal("100"))
+                            ->setCreditor(
+                                PartyIdentification::make()
+                                    ->setName('Pinco Pallino')
+                            )
+                            ->setCreditorAccount('IT60X0542811101000000123456')
+                            ->setRemittanceInformation(
+                                RemittanceInformation::make()
+                                    ->setUnstructured('Abcd 123')
+                            )
                     )
-            )
-    );
+            );
 
-/** @var \SimpleXMLElement $xml */
-$xml = $sdd->toXML();
+        /** @var \SimpleXMLElement $xml */
+        $xml = $sdd->toXML();
 
-// do whatever you want with $xml variable...
+        // do whatever you want with $xml variable...
+    }
+}
 ```
 
 ## Changelog

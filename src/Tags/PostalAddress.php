@@ -1,13 +1,14 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags;
 
-use Condividendo\LaravelCBI\Enums\PaymentRequest\AddressType;
+use Condividendo\LaravelCBI\Enums\Country;
+use Condividendo\LaravelCBI\Enums\AddressType;
 use Condividendo\LaravelCBI\Tags\Tag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\StreetName;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\City;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\Country;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PostalCode;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\AddressType as AddressTypeTag;
+use Condividendo\LaravelCBI\Tags\StreetName;
+use Condividendo\LaravelCBI\Tags\City;
+use Condividendo\LaravelCBI\Tags\Country as CountryTag;
+use Condividendo\LaravelCBI\Tags\PostalCode;
+use Condividendo\LaravelCBI\Tags\AddressType as AddressTypeTag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
@@ -37,7 +38,7 @@ class PostalAddress extends Tag
     private $postalCode;
 
     /**
-     * @var Country
+     * @var CountryTag
      */
     private $country;
 
@@ -59,9 +60,9 @@ class PostalAddress extends Tag
         return $this;
     }  
 
-    public function setCountry(string $country): self
+    public function setCountry(Country $country): self
     {
-        $this->country = Country::make()->setCountry($country);
+        $this->country = CountryTag::make()->setCountry($country);
         return $this;
     }  
 

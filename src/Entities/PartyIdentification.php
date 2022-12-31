@@ -1,8 +1,8 @@
 <?php
-namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
+namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Entities\Entity;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PartyIdentification as PartyIdentificationTag;
+use Condividendo\LaravelCBI\Tags\PartyIdentification as PartyIdentificationTag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use RuntimeException;
 

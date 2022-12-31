@@ -18,7 +18,7 @@ class CreditTime extends Tag
 
     public function setCreditTime(string $creditTime): self
     {
-        $this->creditTime = self::makeDateIso8601($creditTime);
+        $this->creditTime = self::makeDate($creditTime)->toIso8601String();;
 
         return $this;
     }    

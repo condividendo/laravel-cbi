@@ -82,6 +82,9 @@ class GroupHeader extends Tag
         $e = $dom->createElement('GrpHdr');
 
         $e->appendChild($this->messageId->toDOMElement($dom));
+        $e->appendChild($this->creditTime->toDOMElement($dom));
+        $e->appendChild($this->numberOfTxs->toDOMElement($dom));
+        $e->appendChild($this->ctrlSum->toDOMElement($dom));
         $e->appendChild($this->initiatingParty->toDOMElement($dom));
 
         return $e;
