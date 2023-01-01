@@ -1,14 +1,14 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\GroupHeader;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentInstruction;
+use Condividendo\LaravelCBI\Tags\SDD\PaymentInstruction;
 use DOMDocument;
 use DOMElement;
 
-class PaymentRequest extends Tag
+class SDD extends Tag
 {
     use Makeable;
 
@@ -31,6 +31,7 @@ class PaymentRequest extends Tag
     public function setPaymentInstruction(PaymentInstruction $paymentInstruction): self
     {
         $this->paymentInstruction = $paymentInstruction;
+
         return $this;
     }
 
@@ -40,8 +41,8 @@ class PaymentRequest extends Tag
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
         $e = $dom->createElementNS(
-            'urn:CBI:xsd:CBIPaymentRequest.00.04.00',
-            'CBIPaymentRequest'
+            'urn:CBI:xsd:CBISDDReqLogMsg.00.01.00',
+            'CBISDDReqLogMsg'
         );
 
         $e->appendChild($this->groupHeader->toDOMElement($dom));

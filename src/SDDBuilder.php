@@ -1,56 +1,29 @@
 <?php
 namespace Condividendo\LaravelCBI;
 
-use Condividendo\LaravelCBI\Entities\CreditTransferTransactionInformation;
-use Condividendo\LaravelCBI\Entities\FinancialInstitution;
-use Condividendo\LaravelCBI\Entities\InitiatingParty;
-use Condividendo\LaravelCBI\Entities\PartyIdentification;
-use Condividendo\LaravelCBI\Entities\PaymentId;
-
-use Condividendo\LaravelCBI\Tags\SDD\SDD as SDDTag;
-use Condividendo\LaravelCBI\Tags\SDD\PaymentInfo as PaymentInfoTag;
-use Condividendo\LaravelCBI\Tags\InitiatingParty as InitiatingPartyTag;
-use Condividendo\LaravelCBI\Tags\GroupHeader as GroupHeaderTag;
-
-use Condividendo\LaravelCBI\Enums\PaymentRequest\CategoryPurpose;
-use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentMethod;
-use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority;
-use Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer;
-use Condividendo\LaravelCBI\Enums\ServiceLevel;
-
-use Illuminate\Support\Facades\Date;
+use Condividendo\LaravelCBI\Entities\SDD\PaymentInstruction;
+use Condividendo\LaravelCBI\Tags\SDD\SDD;
+use Condividendo\LaravelCBI\Tags\SDD\PaymentInstruction as PaymentInstructionTag;
 use DOMDocument;
 use SimpleXMLElement;
 
-class SDDBuilder
+class SDDBuilder extends GroupHeaderBuilder
 {
     /**
-     * @var string
-     */
-    private $messageId;
-    
-    /**
-     * @var array<\Condividendo\LaravelCBI\Entities\InitiatingParty>
-     */
-    private $initiatingParty;
-
-    /**
-     * @var array<\Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentInstruction>
+     * @var PaymentInstructionTag
      */
     private $paymentInstruction;
 
-    public function setInitiatingParty(InitiatingParty $initiatingParty): self
+    public function setPaymentInstruction(PaymentInstruction $paymentInstruction): self
     {
-        $this->initiatingParty = $initiatingParty;
-
+        $this->paymentInstruction = $paymentInstruction->getTag();
         return $this;
     }
     
     public function toDOM(): DOMDocument
     {
         $dom = new DOMDocument();
-        $dom->appendChild($this->makeSDDTag()->toDOMElement($dom));
-
+        $dom->appendChild($this->makePaymentRequest()->toDOMElement($dom));
         return $dom;
     }
 
@@ -58,26 +31,14 @@ class SDDBuilder
     {
         $xml = simplexml_import_dom($this->toDOM());
         assert($xml instanceof SimpleXMLElement);
-
         return $xml;
     }
 
-    private function makeSDDTag(): SDDTag
+    private function makePaymentRequest(): SDD
     {
-        return SDDTag::make()
+        return SDD::make()
             ->setGroupHeader($this->makeGroupHeader())
-            ->setPaymentInfo($this->makePaymentInfo());
-    }
-
-    private function makeGroupHeader(): GroupHeaderTag
-    {
-        return GroupHeaderTag::make()->setMessageId($this->messageId)
-            ->setInitiatingParty($this->initiatingParty->getTag());
-    }
-
-    private function makePaymentInfo(): PaymentInfoTag
-    {
-        return PaymentInfoTag::make(); // TODO
+            ->setPaymentInstruction($this->paymentInstruction);
     }
     
 }

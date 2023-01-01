@@ -3,7 +3,7 @@ namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\Name;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PostalAddress;
+use Condividendo\LaravelCBI\Tags\PostalAddress;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;

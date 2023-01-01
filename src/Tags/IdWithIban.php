@@ -2,30 +2,33 @@
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
+use Condividendo\LaravelCBI\Tags\Iban;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class PostalCode extends Tag
+class IdWithIban extends Tag
 {
     use Makeable;
 
     /**
-     * @var string
+     * @var Iban
      */
-    private $postalCode;
+    private $iban;
 
-    public function setPostalCode(string $postalCode): self
+    public function setAccount(string $iban): self
     {
-        $this->postalCode = $postalCode;
+        $this->iban = Iban::make()->setAccount($iban);
         return $this;
-    }
+    }  
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('PstCd', $this->postalCode);
+        $e = $dom->createElement('Id');
+        $e->appendChild($this->iban->toDOMElement($dom));
+        return $e;
     }
 }

@@ -13,12 +13,12 @@ class InitiatingParty extends Tag
     use Makeable;
 
     /**
-     * @var \Condividendo\LaravelCBI\Tags\Name
+     * @var Name
      */
     private $name;
 
     /**
-     * @var \Condividendo\LaravelCBI\Tags\InitiatingPartyId
+     * @var InitiatingPartyId
      */
     private $id;
     

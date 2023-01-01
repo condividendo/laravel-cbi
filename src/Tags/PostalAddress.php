@@ -28,6 +28,11 @@ class PostalAddress extends Tag
     private $streetName;
 
     /**
+     * @var array<AddressLine>
+     */
+    private $addressLines;
+
+    /**
      * @var City
      */
     private $city;
@@ -45,6 +50,12 @@ class PostalAddress extends Tag
     public function setStreetName(string $streetName): self
     {
         $this->streetName = StreetName::make()->setStreetName($streetName);
+        return $this;
+    }  
+
+    public function addAddressLine(string $addressLine): self
+    {
+        $this->addressLines[] = AddressLine::make()->setAddressLine($addressLine);
         return $this;
     }  
 
@@ -78,11 +89,26 @@ class PostalAddress extends Tag
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
         $e = $dom->createElement('PstlAdr');
-        $e->appendChild($this->addressType->toDOMElement($dom));
-        $e->appendChild($this->streetName->toDOMElement($dom));
-        $e->appendChild($this->postalCode->toDOMElement($dom));
-        $e->appendChild($this->city->toDOMElement($dom));
-        $e->appendChild($this->country->toDOMElement($dom));
+        if($this->addressType){
+            $e->appendChild($this->addressType->toDOMElement($dom));
+        }
+        if($this->streetName){
+            $e->appendChild($this->streetName->toDOMElement($dom));
+        }
+        if($this->postalCode){
+            $e->appendChild($this->postalCode->toDOMElement($dom));
+        }
+        if($this->city){
+            $e->appendChild($this->city->toDOMElement($dom));
+        }
+        if($this->country){
+            $e->appendChild($this->country->toDOMElement($dom));
+        }
+        if($this->addressLines){
+            foreach($this->addressLines as $al){
+                $e->appendChild($al->toDOMElement($dom));
+            }
+        }
         return $e;
     }
 }

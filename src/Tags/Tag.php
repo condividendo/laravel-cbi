@@ -1,5 +1,4 @@
 <?php
-
 namespace Condividendo\LaravelCBI\Tags;
 
 use Brick\Math\BigDecimal;

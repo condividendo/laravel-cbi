@@ -2,7 +2,7 @@
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\Code;
+use Condividendo\LaravelCBI\Tags\PaymentRequest\CategoryPurposeCode;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
@@ -12,13 +12,13 @@ class CategoryPurpose extends Tag
     use Makeable;
 
     /**
-     * @var Code
+     * @var CategoryPurposeCode
      */
     private $code;
     
     public function setCategoryPurpose(\Condividendo\LaravelCBI\Enums\PaymentRequest\CategoryPurpose $categoryPurpose): self
     {
-        $this->code = Code::make()->setCode($categoryPurpose);
+        $this->code = CategoryPurposeCode::make()->setCode($categoryPurpose);
         return $this;
     }
     

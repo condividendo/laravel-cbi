@@ -1,22 +1,23 @@
 <?php
 namespace Condividendo\LaravelCBI\Tags;
 
+use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Name extends Tag
+class PaymentInstructionId extends Tag
 {
     use Makeable;
 
     /**
      * @var string
      */
-    private $name;  
+    private $id;  
 
-    public function setName(string $name): self
+    public function setPaymentInstructionId(string $id): self
     {
-        $this->name = $name;
+        $this->id = $id;
         return $this;
     }    
 
@@ -25,6 +26,6 @@ class Name extends Tag
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('Nm',$this->name);
+        return $dom->createElement('PmtInfId',$this->id);
     }
 }

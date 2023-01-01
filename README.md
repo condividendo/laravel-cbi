@@ -27,11 +27,12 @@ use Condividendo\LaravelCBI\Entities\PartyIdentification;
 use Condividendo\LaravelCBI\Entities\PaymentId;
 use Condividendo\LaravelCBI\Entities\SDD\PaymentInstruction;
 use Condividendo\LaravelCBI\Entities\SDD\PaymentTypeInformation;
+use Condividendo\LaravelCBI\Entities\SDD\CreditorSchemeId;
 use Condividendo\LaravelCBI\Enums\LocalInstrument;
-use Condividendo\LaravelCBI\Enums\SDD\PaymentMethod;
 use Condividendo\LaravelCBI\Enums\SequenceType;
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
 use Condividendo\LaravelCBI\Enums\OrgIdType;
+use Condividendo\LaravelCBI\Enums\SDD\PaymentMethod;
 use Condividendo\LaravelCBI\Traits\UsesDecimal;
 use Illuminate\Support\Facades\Date;
 
@@ -69,7 +70,7 @@ class SDDExample
                             ->setClearingSystemMemberId('01234')
                     )
                     ->setCreditorSchemeId(
-                        PartyIdentification::make()
+                        CreditorSchemeId::make()
                             ->setName('Condividendo Italia s.r.l.')
                             ->setId('IT210010000000123456789')
                     )
@@ -80,7 +81,7 @@ class SDDExample
                                     ->setInstructionId('1')
                                     ->setEndToEndId('1.1')
                             )
-                            ->setAmount(Money::of(100, 'EUR'))
+                            ->setAmount(self::makeDecimal("100"))
                             ->setDirectDebitTransaction(
                                 DirectDebitTransaction::make()
                                     ->setMandateRelatedInformation(

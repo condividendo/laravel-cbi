@@ -18,7 +18,6 @@ class Issr extends Tag
     public function setIssr(OrgIdType $issr): self
     {
         $this->issr = $issr;
-
         return $this;
     }    
 

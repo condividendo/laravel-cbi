@@ -13,26 +13,24 @@ class Other extends Tag
     use Makeable;
 
     /**
-     * @var \Condividendo\LaravelCBI\Tags\Issr
+     * @var Issr
      */
     private $issr;
 
     /**
-     * @var \Condividendo\LaravelCBI\Tags\Id
+     * @var Id
      */
     private $id;
     
     public function setIssr(OrgIdType $issr): self
     {
         $this->issr = Issr::make()->setIssr($issr);
-
         return $this;
     }
 
     public function setId(string $id): self
     {
-        $this->id = ID::make()->setId($id);
-
+        $this->id = Id::make()->setId($id);
         return $this;
     }    
 
@@ -42,10 +40,8 @@ class Other extends Tag
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
         $e = $dom->createElement('Othr');
-
         $e->appendChild($this->id->toDOMElement($dom));
         $e->appendChild($this->issr->toDOMElement($dom));
-
         return $e;
     }
 }

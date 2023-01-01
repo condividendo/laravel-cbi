@@ -1,8 +1,8 @@
 <?php
-namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
+namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Entities\Entity;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\RemittanceInformation as RemittanceInformationTag;
+use Condividendo\LaravelCBI\Tags\RemittanceInformation as RemittanceInformationTag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use RuntimeException;
 

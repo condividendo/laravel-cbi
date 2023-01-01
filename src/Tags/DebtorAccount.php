@@ -1,8 +1,8 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\Id;
+use Condividendo\LaravelCBI\Tags\IdWithIban;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
@@ -12,13 +12,13 @@ class DebtorAccount extends Tag
     use Makeable;
 
     /**
-     * @var Id
+     * @var IdWithIban
      */
     private $debtorId;
 
     public function setDebtorAccount(string $account): self
     {
-        $this->debtorId = Id::make()->setAccount($account);
+        $this->debtorId = IdWithIban::make()->setAccount($account);
         return $this;
     }  
 

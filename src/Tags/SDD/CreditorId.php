@@ -1,24 +1,24 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\Iban;
+use Condividendo\LaravelCBI\Tags\SDD\CreditorPrivateId;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Id extends Tag
+class CreditorId extends Tag
 {
     use Makeable;
 
     /**
-     * @var Iban
+     * @var CreditorPrivateId
      */
-    private $iban;
+    private $creditorPrivateId;
 
-    public function setAccount(string $iban): self
+    public function setId(string $id): self
     {
-        $this->iban = Iban::make()->setAccount($iban);
+        $this->creditorPrivateId = CreditorPrivateId::make()->setId($id);
         return $this;
     }  
 
@@ -28,7 +28,7 @@ class Id extends Tag
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
         $e = $dom->createElement('Id');
-        $e->appendChild($this->iban->toDOMElement($dom));
+        $e->appendChild($this->creditorPrivateId->toDOMElement($dom));
         return $e;
     }
 }

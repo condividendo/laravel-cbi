@@ -1,33 +1,33 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags;
+namespace Condividendo\LaravelCBI\Tags\SDD;
 
-use Condividendo\LaravelCBI\Enums\OrgIdType;
-use Condividendo\LaravelCBI\Traits\Makeable;
+use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\Other;
+use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class OrgId extends Tag
+class CreditorPrivateId extends Tag
 {
     use Makeable;
 
     /**
-     * @var \Condividendo\LaravelCBI\Tags\Other
+     * @var Other
      */
     private $other;
 
-    public function setId(string $id, OrgIdType $issr): self
+    public function setId(string $id): self
     {
-        $this->other = Other::make()->setId($id)->setIssr($issr);
+        $this->other = Other::make()->setId($id);
         return $this;
-    }    
+    }  
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('OrgId');
+        $e = $dom->createElement('PrvtId');
         $e->appendChild($this->other->toDOMElement($dom));
         return $e;
     }

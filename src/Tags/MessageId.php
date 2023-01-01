@@ -17,7 +17,6 @@ class MessageId extends Tag
     public function setMessageId(string $messageId): self
     {
         $this->messageId = $messageId;
-
         return $this;
     }    
 

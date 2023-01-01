@@ -12,14 +12,13 @@ class InitiatingPartyId extends Tag
     use Makeable;
 
     /**
-     * @var \Condividendo\LaravelCBI\Tags\OrgId
+     * @var OrgId
      */
     private $orgId;
 
     public function setId(string $id, OrgIdType $issr): self
     {
         $this->orgId = OrgId::make()->setId($id,$issr);
-
         return $this;
     }    
 
@@ -29,9 +28,7 @@ class InitiatingPartyId extends Tag
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
         $e = $dom->createElement('Id');
-
         $e->appendChild($this->orgId->toDOMElement($dom));
-
         return $e;
     }
 }

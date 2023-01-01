@@ -1,31 +1,31 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class InstructionId extends Tag
+class MemberId extends Tag
 {
     use Makeable;
 
     /**
      * @var string
      */
-    private $instructionId;
-    
-    public function setInstructionId(string $instructionId): self
+    private $mmbId;
+
+    public function setMemberId(string $mmbId): self
     {
-        $this->instructionId = $instructionId;
+        $this->mmbId = $mmbId;
         return $this;
-    }
-    
+    }  
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('InstrId', $this->instructionId);
+        return $dom->createElement('MmbId',$this->mmbId);
     }
 }

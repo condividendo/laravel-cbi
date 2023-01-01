@@ -1,5 +1,5 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\FinancialInstitution;
@@ -27,7 +27,7 @@ class ExecutingBank extends Tag
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('DbtrAgt');
+        $e = $dom->createElement('CdtrAgt');
         $e->appendChild($this->financialInstitution->toDOMElement($dom));
         return $e;
     }

@@ -3,10 +3,10 @@ namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
 
 use Condividendo\LaravelCBI\Entities\Entity;
 use Condividendo\LaravelCBI\Entities\PartyIdentification;
-use Condividendo\LaravelCBI\Tags\PartyIdentification as PartyIdentificationTag;
-use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentId;
+use Condividendo\LaravelCBI\Entities\PaymentId;
+use Condividendo\LaravelCBI\Entities\RemittanceInformation;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentTypeInformation;
-use Condividendo\LaravelCBI\Entities\PaymentRequest\RemittanceInformation;
+use Condividendo\LaravelCBI\Tags\PartyIdentification as PartyIdentificationTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation as CreditTransferTransactionInformationTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentId as PaymentIdTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentTypeInformation as PaymentTypeInformationTag;

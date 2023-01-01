@@ -1,9 +1,9 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\InstructionId;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\EndToEndId;
+use Condividendo\LaravelCBI\Tags\InstructionId;
+use Condividendo\LaravelCBI\Tags\EndToEndId;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;

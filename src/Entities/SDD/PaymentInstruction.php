@@ -1,19 +1,20 @@
 <?php
-namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
+namespace Condividendo\LaravelCBI\Entities\SDD;
 
 use Condividendo\LaravelCBI\Entities\Entity;
 use Condividendo\LaravelCBI\Entities\PartyIdentification;
 use Condividendo\LaravelCBI\Entities\FinancialInstitution;
 use Condividendo\LaravelCBI\Entities\PaymentTypeInfo;
-use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentMethod;
-use Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer;
-use Condividendo\LaravelCBI\Entities\PaymentRequest\CreditTransferTransactionInformation;
+use Condividendo\LaravelCBI\Entities\SDD\DirectDebitTransactionInformation;
+use Condividendo\LaravelCBI\Entities\SDD\CreditorSchemeId;
+use Condividendo\LaravelCBI\Enums\SDD\PaymentMethod;
 use Condividendo\LaravelCBI\Tags\PartyIdentification as PartyIdentificationTag;
 use Condividendo\LaravelCBI\Tags\PaymentTypeInfo as PaymentTypeInfoTag;
 use Condividendo\LaravelCBI\Tags\FinancialInstitution as FinancialInstitutionTag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentInstruction as PaymentInstructionTag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation as CreditTransferTransactionInformationTag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\ExecutingBank;
+use Condividendo\LaravelCBI\Tags\SDD\PaymentInstruction as PaymentInstructionTag;
+use Condividendo\LaravelCBI\Tags\SDD\DirectDebitTransactionInformation as DirectDebitTransactionInformationTag;
+use Condividendo\LaravelCBI\Tags\SDD\ExecutingBank;
+use Condividendo\LaravelCBI\Tags\SDD\CreditorSchemeId as CreditorSchemeIdTag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use RuntimeException;
 
@@ -27,6 +28,11 @@ class PaymentInstruction extends Entity
     private $id;
 
     /**
+     * @var CreditorSchemeIdTag
+     */
+    private $creditorSchemeId;
+
+    /**
      * @var PaymentMethod
      */
     private $paymentMethod;
@@ -37,11 +43,6 @@ class PaymentInstruction extends Entity
     private $paymentTypeInfo;
 
     /**
-     * @var CommissionPayer
-     */
-    private $commissionPayer;
-
-    /**
      * @var bool
      */
     private $batchBooking;
@@ -49,17 +50,17 @@ class PaymentInstruction extends Entity
     /**
      * @var string
      */
-    private $requiredExecutionDate;
+    private $requiredCollectionDate;
 
     /**
      * @var PartyIdentificationTag
      */
-    private $debtor;
+    private $creditor;
 
     /**
      * @var string
      */
-    private $debtorAccount;
+    private $creditorAccount;
 
     /**
      * @var ExecutingBank
@@ -67,9 +68,9 @@ class PaymentInstruction extends Entity
     private $executingBank;
 
     /**
-     * @var array<CreditTransferTransactionInformationTag>
+     * @var array<DirectDebitTransactionInformation>
      */
-    private $creditTransferTransactionInformation = [];
+    private $directDebitTransactionInformation = [];
     
     public function setBatchBooking(bool $batchBooking): self
     {
@@ -77,21 +78,21 @@ class PaymentInstruction extends Entity
         return $this;
     }
 
-    public function setRequiredExecutionDate(string $requiredExecutionDate): self
+    public function setRequiredCollectionDate(string $requiredCollectionDate): self
     {
-        $this->requiredExecutionDate = $requiredExecutionDate;
+        $this->requiredCollectionDate = $requiredCollectionDate;
         return $this;
     }
 
-    public function setDebtor(PartyIdentification $debtor): self
+    public function setCreditor(PartyIdentification $creditor): self
     {
-        $this->debtor = $debtor->getTag();
+        $this->creditor = $creditor->getTag();
         return $this;
     }
 
-    public function setDebtorAccount(string $debtorAccount): self
+    public function setCreditorAccount(string $creditorAccount): self
     {
-        $this->debtorAccount = $debtorAccount;
+        $this->creditorAccount = $creditorAccount;
         return $this;
     }
 
@@ -101,9 +102,9 @@ class PaymentInstruction extends Entity
         return $this;
     }
 
-    public function addCreditTransferTransactionInformation(CreditTransferTransactionInformation $creditTransferTransactionInformation): self
+    public function addDirectDebitTransactionInformation(DirectDebitTransactionInformation $directDebitTransactionInformation): self
     {
-        $this->creditTransferTransactionInformation[] = $creditTransferTransactionInformation->getTag();
+        $this->directDebitTransactionInformation[] = $directDebitTransactionInformation->getTag();
         return $this;
     }
 
@@ -118,33 +119,33 @@ class PaymentInstruction extends Entity
         $this->paymentTypeInfo = $paymentTypeInfo->getTag();
         return $this;
     }
-    
-    public function setCommissionPayer(CommissionPayer $commissionPayer): self
-    {
-        $this->commissionPayer = $commissionPayer;
-        return $this;
-    }
 
     public function setId(string $id): self
     {
         $this->id = $id;
         return $this;
     }     
+
+    public function setCreditorSchemeId(CreditorSchemeId $creditorSchemeId): self
+    {
+        $this->creditorSchemeId = $creditorSchemeId->getTag();
+        return $this;
+    }
     
     public function getTag(): PaymentInstructionTag
     {
         $tag = PaymentInstructionTag::make()
                 ->setId($this->id)
-                ->setCommissionPayer($this->commissionPayer)
                 ->setPaymentTypeInfo($this->paymentTypeInfo)
                 ->setPaymentMethod($this->paymentMethod)
                 ->setExecutingBank($this->executingBank)
-                ->setDebtor($this->debtor)
-                ->setDebtorAccount($this->debtorAccount)
-                ->setRequiredExecutionDate($this->requiredExecutionDate)
+                ->setCreditor($this->creditor)
+                ->setCreditorAccount($this->creditorAccount)
+                ->setCreditorSchemeId($this->creditorSchemeId)
+                ->setRequiredCollectionDate($this->requiredCollectionDate)
                 ->setBatchBooking($this->batchBooking ? true : false);
-        foreach($this->creditTransferTransactionInformation as $info){
-            $tag->addCreditTransferTransactionInformation($info);
+        foreach($this->directDebitTransactionInformation as $info){
+            $tag->addDirectDebitTransactionInformation($info);
         }
         return $tag;
     }

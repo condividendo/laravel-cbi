@@ -1,31 +1,33 @@
 <?php
-namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
+namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class Unstructured extends Tag
+class InstantiatedAmount extends Tag
 {
     use Makeable;
 
     /**
      * @var string
      */
-    private $unstructured;
-    
-    public function setUnstructured(string $unstructured): self
+    private $amount;
+        
+    public function setAmount(string $amount): self
     {
-        $this->unstructured = $unstructured;
+        $this->amount = $amount;
         return $this;
     }
-    
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('Ustrd',$this->unstructured);
+        $e = $dom->createElement('InstdAmt', $this->amount);
+        $e->setAttribute("Ccy", "EUR");
+        return $e;
     }
 }

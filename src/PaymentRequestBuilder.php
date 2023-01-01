@@ -1,5 +1,4 @@
 <?php
-
 namespace Condividendo\LaravelCBI;
 
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentInstruction;
@@ -11,14 +10,13 @@ use SimpleXMLElement;
 class PaymentRequestBuilder extends GroupHeaderBuilder
 {
     /**
-     * @var array<\Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentInstruction>
+     * @var PaymentInstructionTag
      */
     private $paymentInstruction;
 
     public function setPaymentInstruction(PaymentInstruction $paymentInstruction): self
     {
         $this->paymentInstruction = $paymentInstruction->getTag();
-
         return $this;
     }
     
@@ -26,7 +24,6 @@ class PaymentRequestBuilder extends GroupHeaderBuilder
     {
         $dom = new DOMDocument();
         $dom->appendChild($this->makePaymentRequest()->toDOMElement($dom));
-
         return $dom;
     }
 
@@ -34,7 +31,6 @@ class PaymentRequestBuilder extends GroupHeaderBuilder
     {
         $xml = simplexml_import_dom($this->toDOM());
         assert($xml instanceof SimpleXMLElement);
-
         return $xml;
     }
 

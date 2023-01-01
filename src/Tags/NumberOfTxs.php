@@ -19,7 +19,6 @@ class NumberOfTxs extends Tag
     public function setNumberOfTxs(int $numberOfTxs): self
     {
         $this->numberOfTxs = $numberOfTxs;
-
         return $this;
     }    
 
