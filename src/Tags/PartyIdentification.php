@@ -4,6 +4,7 @@ namespace Condividendo\LaravelCBI\Tags;
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\Name;
 use Condividendo\LaravelCBI\Tags\PostalAddress;
+use Condividendo\LaravelCBI\Tags\SDD\PartyId;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
@@ -23,6 +24,11 @@ class PartyIdentification extends Tag
     private $postalAddress;
 
     /**
+     * @var PartyId
+     */
+    private $partyId;
+
+    /**
      * @var bool
      */
     private $isDebtor;
@@ -36,6 +42,12 @@ class PartyIdentification extends Tag
     public function setPostalAddress(PostalAddress $postalAddress): self
     {
         $this->postalAddress = $postalAddress;
+        return $this;
+    }  
+
+    public function setPrivateId(string $privateId): self
+    {
+        $this->partyId = PartyId::make()->setId($privateId);
         return $this;
     }  
 
@@ -54,6 +66,9 @@ class PartyIdentification extends Tag
         $e->appendChild($this->name->toDOMElement($dom));
         if ($this->postalAddress) {
             $e->appendChild($this->postalAddress->toDOMElement($dom));
+        }
+        if ($this->partyId) {
+            $e->appendChild($this->partyId->toDOMElement($dom));
         }
         return $e;
     }

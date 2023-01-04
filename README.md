@@ -25,13 +25,16 @@ use Condividendo\LaravelCBI\Entities\InitiatingParty;
 use Condividendo\LaravelCBI\Entities\MandateRelatedInformation;
 use Condividendo\LaravelCBI\Entities\PartyIdentification;
 use Condividendo\LaravelCBI\Entities\PaymentId;
+use Condividendo\LaravelCBI\Entities\RemittanceInformation;
 use Condividendo\LaravelCBI\Entities\SDD\PaymentInstruction;
 use Condividendo\LaravelCBI\Entities\SDD\PaymentTypeInformation;
 use Condividendo\LaravelCBI\Entities\SDD\CreditorSchemeId;
+use Condividendo\LaravelCBI\Entities\SDD\Purpose;
 use Condividendo\LaravelCBI\Enums\LocalInstrument;
 use Condividendo\LaravelCBI\Enums\SequenceType;
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
 use Condividendo\LaravelCBI\Enums\OrgIdType;
+use Condividendo\LaravelCBI\Enums\Country;
 use Condividendo\LaravelCBI\Enums\SDD\PaymentMethod;
 use Condividendo\LaravelCBI\Traits\UsesDecimal;
 use Illuminate\Support\Facades\Date;
@@ -93,8 +96,21 @@ class SDDExample
                             ->setDebtor(
                                 PartyIdentification::make()
                                     ->setName('Pinco Pallino')
+                                    ->setPostalAddress(
+                                        PostalAddress::make()
+                                            ->setCity("ROVIGO")
+                                            ->setCountry(Country::IT())
+                                            ->addAddressLine("VIA DE GASPERI 181")
+                                            ->addAddressLine("XXXXX ROVIGO (RO)")
+                                    )
+                                    ->setPrivateId("12345678901")
                             )
                             ->setDebtorAccount('IT60X0542811101000000123456')
+                            ->setPurpose(Purpose::PADD())
+                            ->setRemittanceInformation(
+                                RemittanceInformation::make()
+                                    ->setUnstructured('Abcd 123')
+                            )
                     )
             );
 

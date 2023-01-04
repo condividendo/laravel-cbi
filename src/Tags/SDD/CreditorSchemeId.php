@@ -3,7 +3,7 @@ namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\Name;
-use Condividendo\LaravelCBI\Tags\SDD\CreditorId;
+use Condividendo\LaravelCBI\Tags\SDD\PartyId;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
@@ -18,14 +18,14 @@ class CreditorSchemeId extends Tag
     private $name;
 
     /**
-     * @var CreditorId
+     * @var PartyId
      */
     private $creditorId;
 
     public function setId(string $name, string $id): self
     {
         $this->name = Name::make()->setName($name);
-        $this->creditorId = CreditorId::make()->setId($id);
+        $this->creditorId = PartyId::make()->setId($id);
         return $this;
     }  
 

@@ -5,10 +5,10 @@ use BenSampo\Enum\Enum;
 
 /**
  * @property string $value
- * @method static self B2B()
+ * @method static self PADD()
  * 
  */
-final class LocalInstrument extends Enum
+final class Purpose extends Enum
 {
-    public const B2B = 'B2B';
+    public const PADD = 'PADD';
 }

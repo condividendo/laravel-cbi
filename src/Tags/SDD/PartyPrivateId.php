@@ -2,23 +2,23 @@
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
-use Condividendo\LaravelCBI\Tags\SDD\CreditorPrivateId;
+use Condividendo\LaravelCBI\Tags\Other;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class CreditorId extends Tag
+class PartyPrivateId extends Tag
 {
     use Makeable;
 
     /**
-     * @var CreditorPrivateId
+     * @var Other
      */
-    private $creditorPrivateId;
+    private $other;
 
     public function setId(string $id): self
     {
-        $this->creditorPrivateId = CreditorPrivateId::make()->setId($id);
+        $this->other = Other::make()->setId($id);
         return $this;
     }  
 
@@ -27,8 +27,8 @@ class CreditorId extends Tag
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('Id');
-        $e->appendChild($this->creditorPrivateId->toDOMElement($dom));
+        $e = $dom->createElement('PrvtId');
+        $e->appendChild($this->other->toDOMElement($dom));
         return $e;
     }
 }

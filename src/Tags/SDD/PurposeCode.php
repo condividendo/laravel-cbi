@@ -2,33 +2,31 @@
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
-use Condividendo\LaravelCBI\Tags\Other;
+use Condividendo\LaravelCBI\Enums\ServiceLevel;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
 use DOMElement;
 
-class CreditorPrivateId extends Tag
+class PurposeCode extends Tag
 {
     use Makeable;
 
     /**
-     * @var Other
+     * @var \Condividendo\LaravelCBI\Enums\SDD\Purpose
      */
-    private $other;
+    private $purpose;
 
-    public function setId(string $id): self
+    public function setPurpose(\Condividendo\LaravelCBI\Enums\SDD\Purpose $purpose): self
     {
-        $this->other = Other::make()->setId($id);
+        $this->purpose = $purpose;
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('PrvtId');
-        $e->appendChild($this->other->toDOMElement($dom));
-        return $e;
+        return $dom->createElement('Cd', $this->purpose->value);
     }
 }
