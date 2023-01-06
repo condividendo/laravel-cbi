@@ -16,26 +16,26 @@ composer require condividendo/laravel-cbi
 ### SEPA Direct Debit
 
 ```php
-use Brick\Money\Money;
 use Condividendo\LaravelCBI\CBI;
-use Condividendo\LaravelCBI\Entities\DirectDebitTransaction;
-use Condividendo\LaravelCBI\Entities\DirectDebitTransactionInformation;
+use Condividendo\LaravelCBI\Entities\PaymentTypeInformation;
 use Condividendo\LaravelCBI\Entities\FinancialInstitution;
 use Condividendo\LaravelCBI\Entities\InitiatingParty;
-use Condividendo\LaravelCBI\Entities\MandateRelatedInformation;
 use Condividendo\LaravelCBI\Entities\PartyIdentification;
 use Condividendo\LaravelCBI\Entities\PaymentId;
 use Condividendo\LaravelCBI\Entities\RemittanceInformation;
 use Condividendo\LaravelCBI\Entities\SDD\PaymentInstruction;
-use Condividendo\LaravelCBI\Entities\SDD\PaymentTypeInformation;
 use Condividendo\LaravelCBI\Entities\SDD\CreditorSchemeId;
-use Condividendo\LaravelCBI\Entities\SDD\Purpose;
-use Condividendo\LaravelCBI\Enums\LocalInstrument;
-use Condividendo\LaravelCBI\Enums\SequenceType;
+use Condividendo\LaravelCBI\Entities\SDD\PostalAddress;
+use Condividendo\LaravelCBI\Entities\SDD\MandateRelatedInformation;
+use Condividendo\LaravelCBI\Entities\SDD\DirectDebitTransaction;
+use Condividendo\LaravelCBI\Entities\SDD\DirectDebitTransactionInformation;
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
 use Condividendo\LaravelCBI\Enums\OrgIdType;
 use Condividendo\LaravelCBI\Enums\Country;
 use Condividendo\LaravelCBI\Enums\SDD\PaymentMethod;
+use Condividendo\LaravelCBI\Enums\SDD\LocalInstrument;
+use Condividendo\LaravelCBI\Enums\SDD\SequenceType;
+use Condividendo\LaravelCBI\Enums\SDD\Purpose;
 use Condividendo\LaravelCBI\Traits\UsesDecimal;
 use Illuminate\Support\Facades\Date;
 
@@ -125,7 +125,6 @@ class SDDExample
 ### Payment Request
 
 ```php
-use Brick\Money\Money;
 use Condividendo\LaravelCBI\CBI;
 use Condividendo\LaravelCBI\Entities\CreditTransferTransactionInformation;
 use Condividendo\LaravelCBI\Entities\FinancialInstitution;

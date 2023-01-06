@@ -3,6 +3,7 @@ namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
 use Condividendo\LaravelCBI\Enums\SDD\SequenceType;
+use Condividendo\LaravelCBI\Enums\SDD\LocalInstrument;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority;
 use Condividendo\LaravelCBI\Entities\Entity;
 use Condividendo\LaravelCBI\Tags\PaymentTypeInfo as PaymentTypeInfoTag;
@@ -28,6 +29,11 @@ class PaymentTypeInfo extends Entity
      */
     private $sequenceType;  
 
+    /**
+     * @var LocalInstrument
+     */
+    private $localInstrument;  
+
     public function setPaymentPriority(PaymentPriority $paymentPriority): self
     {
         $this->paymentPriority = $paymentPriority;
@@ -46,6 +52,12 @@ class PaymentTypeInfo extends Entity
         return $this;
     }   
 
+    public function setLocalInstrument(LocalInstrument $localInstrument): self
+    {
+        $this->localInstrument = $localInstrument;
+        return $this;
+    }   
+
     public function getTag(): PaymentTypeInfoTag
     {
         $tag = PaymentTypeInfoTag::make()
@@ -55,6 +67,9 @@ class PaymentTypeInfo extends Entity
         }
         if($this->sequenceType){
             $tag->setSequenceType($this->sequenceType);
+        }
+        if($this->localInstrument){
+            $tag->setLocalInstrument($this->localInstrument);          
         }
         return $tag;
     }

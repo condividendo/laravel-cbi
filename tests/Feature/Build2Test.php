@@ -22,7 +22,7 @@ use Condividendo\LaravelCBI\Enums\OrgIdType;
 use Condividendo\LaravelCBI\Traits\UsesDecimal;
 use Illuminate\Support\Facades\Date;
 
-class Build1Test extends TestCase
+class Build2Test extends TestCase
 {
     use UsesDecimal; 
 
@@ -32,7 +32,7 @@ class Build1Test extends TestCase
         echo "test_xml() xml:\r\n$xml\r\n"; 
         assert(is_string($xml));
 
-        $this->assertXmlStringEqualsXmlFile(__DIR__ . '/../fixtures/1.xml', $xml);
+        $this->assertXmlStringEqualsXmlFile(__DIR__ . '/../fixtures/2.xml', $xml);
     }
     
     public function test_schema(): void
@@ -47,6 +47,8 @@ class Build1Test extends TestCase
 
     private function build(): PaymentRequestBuilder
     {
+        // TODO: add instructions for San Marino
+
         return CBI::paymentRequest()
                 ->setMessageId('1')
                 ->setNumberOfTxs(1)

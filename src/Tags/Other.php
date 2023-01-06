@@ -40,8 +40,12 @@ class Other extends Tag
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
         $e = $dom->createElement('Othr');
-        $e->appendChild($this->id->toDOMElement($dom));
-        $e->appendChild($this->issr->toDOMElement($dom));
+        if($this->id){
+            $e->appendChild($this->id->toDOMElement($dom));
+        }
+        if($this->issr){
+            $e->appendChild($this->issr->toDOMElement($dom));
+        }
         return $e;
     }
 }

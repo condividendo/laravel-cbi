@@ -116,7 +116,7 @@ class PaymentInstruction extends Tag
 
     public function setRequiredCollectionDate(string $date): self
     {
-        $this->id = RequiredCollectionDate::make()->setRequiredCollectionDate($date);
+        $this->requiredCollectionDate = RequiredCollectionDate::make()->setRequiredCollectionDate($date);
         return $this;
     }  
 

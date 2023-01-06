@@ -3,6 +3,7 @@ namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Entities\Entity;
 use Condividendo\LaravelCBI\Enums\AddressType;
+use Condividendo\LaravelCBI\Enums\Country;
 use Condividendo\LaravelCBI\Tags\PostalAddress as PostalAddressTag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use RuntimeException;
@@ -32,9 +33,14 @@ class PostalAddress extends Entity
     private $postalCode;
 
     /**
-     * @var string
+     * @var Country
      */
     private $country;
+
+    /**
+     * @var array<string>
+     */
+    private $addressLines;
 
     public function setStreetName(string $streetName): self
     {
@@ -54,7 +60,7 @@ class PostalAddress extends Entity
         return $this;
     }  
 
-    public function setCountry(string $country): self
+    public function setCountry(Country $country): self
     {
         $this->country = $country;
         return $this;
@@ -65,14 +71,34 @@ class PostalAddress extends Entity
         $this->addressType = $addressType;
         return $this;
     }
+
+    public function addAddressLine(string $addressLine): self
+    {
+        $this->addressLines[] = $addressLine;
+        return $this;
+    }  
     
     public function getTag(): PostalAddressTag
     {
-        return PostalAddressTag::make()
-                ->setAddressType($this->addressType)
-                ->setStreetName($this->streetName)
-                ->setCity($this->city)
-                ->setPostalCode($this->postalCode)
-                ->setCountry($this->country);
+        $tag = PostalAddressTag::make();
+        if($this->addressType){        
+            $tag->setAddressType($this->addressType);
+        }
+        if($this->streetName){        
+            $tag->setStreetName($this->streetName);
+        }
+        if($this->city){    
+            $tag->setCity($this->city);
+        }
+        if($this->postalCode){    
+            $tag->setPostalCode($this->postalCode);
+        }
+        if($this->country){   
+            $tag->setCountry($this->country); 
+        }
+        foreach($this->addressLines as $al){
+            $tag->addAddressLine($al); 
+        }
+        return $tag;
     }
 }

@@ -79,7 +79,7 @@ class DirectDebitTransactionInformation extends Tag
     
     public function setDebtor(PartyIdentification $partyIdentification): self
     {
-        $this->partyIdentification = $partyIdentification->setAsDebtorOrDebtor(true);
+        $this->partyIdentification = $partyIdentification->setAsDebtorOrCreditor(true);
         return $this;
     }  
     

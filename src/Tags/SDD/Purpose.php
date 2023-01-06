@@ -18,7 +18,7 @@ class Purpose extends Tag
 
     public function setPurpose(\Condividendo\LaravelCBI\Enums\SDD\Purpose $purpose): self
     {
-        $this->purpose = PurposeCode::make()->setPurposeCode($purpose);
+        $this->purpose = PurposeCode::make()->setPurpose($purpose);
         return $this;
     }
 

@@ -18,7 +18,7 @@ class MandateRelatedInformation extends Entity
     /**
      * @var string
      */
-    private $id;
+    private $mandateId;
 
     /**
      * @var bool
@@ -37,16 +37,16 @@ class MandateRelatedInformation extends Entity
         return $this;
     }  
 
-    public function setId(string $id): self
+    public function setMandateId(string $mandateId): self
     {
-        $this->id = $id;
+        $this->mandateId = $mandateId;
         return $this;
     }  
     
     public function getTag(): MandateRelatedInformationTag
     {
         return MandateRelatedInformationTag::make()
-                ->setId($this->id)
+                ->setMandateId($this->mandateId)
                 ->setDateOfSignature($this->dateOfSignature)
                 ->setAmendmentIndicator($this->amendmentIndicator);
     }    
