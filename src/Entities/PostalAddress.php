@@ -96,8 +96,10 @@ class PostalAddress extends Entity
         if($this->country){   
             $tag->setCountry($this->country); 
         }
-        foreach($this->addressLines as $al){
-            $tag->addAddressLine($al); 
+        if($this->addressLines){
+            foreach($this->addressLines as $al){
+                $tag->addAddressLine($al); 
+            }
         }
         return $tag;
     }

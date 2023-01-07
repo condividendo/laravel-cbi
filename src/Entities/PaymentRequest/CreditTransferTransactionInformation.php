@@ -86,12 +86,17 @@ class CreditTransferTransactionInformation extends Entity
     
     public function getTag(): CreditTransferTransactionInformationTag
     {
-        return CreditTransferTransactionInformationTag::make()
+        $tag = CreditTransferTransactionInformationTag::make()
                 ->setCreditorAccount($this->creditorAccount)
                 ->setPaymentId($this->paymentId)
                 ->setAmount($this->amount)
-                ->setPaymentTypeInformation($this->paymentTypeInformation)
-                ->setCreditor($this->partyIdentification)
-                ->setRemittanceInformation($this->remittanceInformation);
+                ->setCreditor($this->partyIdentification);
+        if($this->paymentTypeInformation){
+            $tag->setPaymentTypeInformation($this->paymentTypeInformation);
+        }
+        if($this->remittanceInformation){
+            $tag->setRemittanceInformation($this->remittanceInformation);
+        }
+        return $tag;
     }
 }

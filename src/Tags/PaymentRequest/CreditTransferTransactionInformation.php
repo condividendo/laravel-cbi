@@ -89,11 +89,15 @@ class CreditTransferTransactionInformation extends Tag
     {
         $e = $dom->createElement('CdtTrfTxInf');
         $e->appendChild($this->paymentId->toDOMElement($dom));
-        $e->appendChild($this->paymentTypeInformation->toDOMElement($dom));
+        if($this->paymentTypeInformation){
+            $e->appendChild($this->paymentTypeInformation->toDOMElement($dom));
+        }
         $e->appendChild($this->amount->toDOMElement($dom));
         $e->appendChild($this->partyIdentification->toDOMElement($dom));
         $e->appendChild($this->creditorAccount->toDOMElement($dom));
-        $e->appendChild($this->remittanceInformation->toDOMElement($dom));
+        if($this->remittanceInformation){
+            $e->appendChild($this->remittanceInformation->toDOMElement($dom));
+        }
         return $e;
     }
 }

@@ -10,6 +10,7 @@ use Condividendo\LaravelCBI\Entities\PaymentTypeInfo;
 use Condividendo\LaravelCBI\Entities\PaymentId;
 use Condividendo\LaravelCBI\Entities\RemittanceInformation;
 use Condividendo\LaravelCBI\Entities\FinancialInstitution;
+use Condividendo\LaravelCBI\Entities\PostalAddress;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\CreditTransferTransactionInformation;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentInstruction;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentTypeInformation;
@@ -19,6 +20,8 @@ use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority;
 use Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer;
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
 use Condividendo\LaravelCBI\Enums\OrgIdType;
+use Condividendo\LaravelCBI\Enums\Country;
+use Condividendo\LaravelCBI\Enums\AddressType;
 use Condividendo\LaravelCBI\Traits\UsesDecimal;
 use Illuminate\Support\Facades\Date;
 
@@ -47,7 +50,7 @@ class Build2Test extends TestCase
 
     private function build(): PaymentRequestBuilder
     {
-        // TODO: add instructions for San Marino
+        // This is a test for payments to a San Marino recipient
 
         return CBI::paymentRequest()
                 ->setMessageId('1')
@@ -87,20 +90,20 @@ class Build2Test extends TestCase
                                         ->setInstructionId('1')
                                         ->setEndToEndId('1.1')
                                 )
-                                ->setPaymentTypeInformation(
-                                    PaymentTypeInformation::make()
-                                        ->setCategoryPurpose(CategoryPurpose::SUPP())
-                                )
                                 ->setAmount(self::makeDecimal("760"))
                                 ->setCreditor(
                                     PartyIdentification::make()
-                                        ->setName('Pinco Pallino')
+                                        ->setName('SCOTT HANDERSON')
+                                        ->setPostalAddress(
+                                            PostalAddress::make()
+                                                ->setAddressType(AddressType::ADDR())
+                                                ->setStreetName("Strada Prova 12")
+                                                ->setPostalCode("00912")
+                                                ->setCity("FAETANO")
+                                                ->setCountry(Country::SM())
+                                        )
                                 )
-                                ->setCreditorAccount('IT60X0542811101000000123456')
-                                ->setRemittanceInformation(
-                                    RemittanceInformation::make()
-                                        ->setUnstructured('Abcd 123')
-                                )
+                                ->setCreditorAccount('SE1130000000039687767480')
                         )
                 );
     }
