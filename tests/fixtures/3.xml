@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CBISDDReqLogMsg xmlns="urn:CBI:xsd:CBISDDReqLogMsg.00.01.00">
+    <GrpHdr>
+        <MsgId>1</MsgId>
+        <CreDtTm>2022-02-05T18:19:00+01:00</CreDtTm>
+        <NbOfTxs>1</NbOfTxs>
+        <CtrlSum>100.00</CtrlSum>
+        <InitgPty>
+            <Nm>Condividendo Italia s.r.l.</Nm>
+            <Id>
+                <OrgId>
+                    <Othr>
+                        <Id>12345678</Id>
+                        <Issr>CBI</Issr>
+                    </Othr>
+                </OrgId>
+            </Id>
+        </InitgPty>
+    </GrpHdr>
+    <PmtInf>
+        <PmtInfId>1</PmtInfId>
+        <PmtMtd>DD</PmtMtd>
+        <BtchBookg>true</BtchBookg>
+        <PmtTpInf>
+            <SvcLvl>
+                <Cd>SEPA</Cd>
+            </SvcLvl>
+            <LclInstrm>
+                <Cd>B2B</Cd>
+            </LclInstrm>
+            <SeqTp>RCUR</SeqTp>
+        </PmtTpInf>
+        <ReqdColltnDt>2022-01-01</ReqdColltnDt>
+        <Cdtr>
+            <Nm>Condividendo Italia s.r.l.</Nm>
+            <PstlAdr>
+                <Ctry>IT</Ctry>
+                <AdrLine>Viale Sardegna, 31</AdrLine>
+                <AdrLine>47838 Riccione (RN)</AdrLine>
+            </PstlAdr>
+        </Cdtr>
+        <CdtrAcct>
+            <Id>
+                <IBAN>IT60X0542811101000000123456</IBAN>
+            </Id>
+        </CdtrAcct>
+        <CdtrAgt>
+            <FinInstnId>
+                <ClrSysMmbId>
+                    <MmbId>01234</MmbId>
+                </ClrSysMmbId>
+            </FinInstnId>
+        </CdtrAgt>
+        <CdtrSchmeId>
+            <Nm>Condividendo Italia s.r.l.</Nm>
+            <Id>
+                <PrvtId>
+                    <Othr>
+                        <Id>IT210010000000123456789</Id>
+                    </Othr>
+                </PrvtId>
+            </Id>
+        </CdtrSchmeId>
+        <DrctDbtTxInf>
+            <PmtId>
+                <InstrId>1</InstrId>
+                <EndToEndId>1.1</EndToEndId>            
+            </PmtId>
+            <InstdAmt Ccy="EUR">100.00</InstdAmt>
+            <DrctDbtTx>
+                <MndtRltdInf>
+                    <MndtId>012345</MndtId>
+                    <DtOfSgntr>2022-01-01</DtOfSgntr>
+                    <AmdmntInd>false</AmdmntInd>
+                </MndtRltdInf>
+            </DrctDbtTx>
+            <Dbtr>
+                <Nm>Pinco Pallino</Nm>
+                <PstlAdr>
+                    <TwnNm>ROVIGO</TwnNm>
+                    <Ctry>IT</Ctry>
+                    <AdrLine>VIA DE GASPERI 181</AdrLine>
+                    <AdrLine>XXXXX ROVIGO (RO)</AdrLine>
+                </PstlAdr>
+                <Id>
+                    <PrvtId>
+                        <Othr>
+                            <Id>12345678901</Id>
+                        </Othr>
+                    </PrvtId>
+                </Id>
+            </Dbtr>
+            <DbtrAcct>
+                <Id>
+                    <IBAN>IT60X0542811101000000123456</IBAN>
+                </Id>
+            </DbtrAcct>
+            <Purp>
+                <Cd>PADD</Cd>
+            </Purp>
+            <RmtInf>
+                <Ustrd>Abcd 123</Ustrd>
+            </RmtInf>
+        </DrctDbtTxInf>
+    </PmtInf>
+</CBISDDReqLogMsg>
