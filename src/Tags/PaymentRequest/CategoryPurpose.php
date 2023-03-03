@@ -2,6 +2,7 @@
 
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
+use Condividendo\LaravelCBI\Enums\PaymentRequest\CategoryPurpose as CategoryPurposeEnum;
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\CategoryPurposeCode;
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -17,7 +18,7 @@ class CategoryPurpose extends Tag
      */
     private $code;
 
-    public function setCategoryPurpose(\Condividendo\LaravelCBI\Enums\PaymentRequest\CategoryPurpose $categoryPurpose): self
+    public function setCategoryPurpose(CategoryPurposeEnum $categoryPurpose): self
     {
         $this->code = CategoryPurposeCode::make()->setCode($categoryPurpose);
         return $this;

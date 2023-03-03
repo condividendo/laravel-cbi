@@ -13,7 +13,7 @@ use Condividendo\LaravelCBI\Tags\PartyIdentification as PartyIdentificationTag;
 use Condividendo\LaravelCBI\Tags\PaymentTypeInfo as PaymentTypeInfoTag;
 use Condividendo\LaravelCBI\Tags\FinancialInstitution as FinancialInstitutionTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentInstruction as PaymentInstructionTag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation as CreditTransferTransactionInformationTag;
+use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation as CTTXInfoTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\ExecutingBank;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use RuntimeException;
@@ -68,7 +68,7 @@ class PaymentInstruction extends Entity
     private $executingBank;
 
     /**
-     * @var array<CreditTransferTransactionInformationTag>
+     * @var array<CTTXInfoTag>
      */
     private $creditTransferTransactionInformation = [];
 
@@ -102,9 +102,9 @@ class PaymentInstruction extends Entity
         return $this;
     }
 
-    public function addCreditTransferTransactionInformation(CreditTransferTransactionInformation $creditTransferTransactionInformation): self
+    public function addCreditTransferTransactionInformation(CreditTransferTransactionInformation $cttxInfo): self
     {
-        $this->creditTransferTransactionInformation[] = $creditTransferTransactionInformation->getTag();
+        $this->creditTransferTransactionInformation[] = $cttxInfo->getTag();
         return $this;
     }
 

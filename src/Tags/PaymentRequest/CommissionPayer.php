@@ -2,6 +2,7 @@
 
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
+use Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer as CommissionPayerEnum;
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
@@ -16,7 +17,7 @@ class CommissionPayer extends Tag
      */
     private $commissionPayer;
 
-    public function setCommissionPayer(\Condividendo\LaravelCBI\Enums\PaymentRequest\CommissionPayer $commissionPayer): self
+    public function setCommissionPayer(CommissionPayerEnum $commissionPayer): self
     {
         $this->commissionPayer = $commissionPayer;
         return $this;

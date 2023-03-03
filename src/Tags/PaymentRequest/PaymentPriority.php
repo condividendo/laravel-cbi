@@ -2,6 +2,7 @@
 
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
+use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority as PaymentPriorityEnum;
 use Condividendo\LaravelCBI\Tags\Tag;
 use Condividendo\LaravelCBI\Traits\Makeable;
 use DOMDocument;
@@ -16,7 +17,7 @@ class PaymentPriority extends Tag
      */
     private $paymentPriority;
 
-    public function setPaymentPriority(\Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority $paymentPriority): self
+    public function setPaymentPriority(PaymentPriorityEnum $paymentPriority): self
     {
         $this->paymentPriority = $paymentPriority;
         return $this;

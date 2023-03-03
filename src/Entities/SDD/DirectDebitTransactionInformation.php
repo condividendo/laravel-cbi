@@ -81,7 +81,8 @@ class DirectDebitTransactionInformation extends Entity
 
     public function setMandateRelatedInformation(MandateRelatedInformation $mndt): self
     {
-        $this->directDebitTransaction = DirectDebitTransactionTag::make()->setMandateRelatedInformation($mndt->getTag());
+        $tag = DirectDebitTransactionTag::make();
+        $this->directDebitTransaction = $tag->setMandateRelatedInformation($mndt->getTag());
         return $this;
     }
 

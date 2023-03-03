@@ -8,7 +8,7 @@ use Condividendo\LaravelCBI\Entities\PaymentId;
 use Condividendo\LaravelCBI\Entities\RemittanceInformation;
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentTypeInformation;
 use Condividendo\LaravelCBI\Tags\PartyIdentification as PartyIdentificationTag;
-use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation as CreditTransferTransactionInformationTag;
+use Condividendo\LaravelCBI\Tags\PaymentRequest\CreditTransferTransactionInformation as CTTXInfoTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentId as PaymentIdTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\PaymentTypeInformation as PaymentTypeInformationTag;
 use Condividendo\LaravelCBI\Tags\PaymentRequest\RemittanceInformation as RemittanceInformationTag;
@@ -85,9 +85,9 @@ class CreditTransferTransactionInformation extends Entity
         return $this;
     }
 
-    public function getTag(): CreditTransferTransactionInformationTag
+    public function getTag(): CTTXInfoTag
     {
-        $tag = CreditTransferTransactionInformationTag::make()
+        $tag = CTTXInfoTag::make()
                 ->setCreditorAccount($this->creditorAccount)
                 ->setPaymentId($this->paymentId)
                 ->setAmount($this->amount)

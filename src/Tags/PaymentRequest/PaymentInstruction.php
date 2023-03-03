@@ -105,9 +105,9 @@ class PaymentInstruction extends Tag
         return $this;
     }
 
-    public function addCreditTransferTransactionInformation(CreditTransferTransactionInformation $creditTransferTransactionInformation): self
+    public function addCreditTransferTransactionInformation(CreditTransferTransactionInformation $ctTxInfo): self
     {
-        $this->creditTransferTransactionInformation[] = $creditTransferTransactionInformation;
+        $this->creditTransferTransactionInformation[] = $ctTxInfo;
         return $this;
     }
 

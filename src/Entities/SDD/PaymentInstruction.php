@@ -103,9 +103,9 @@ class PaymentInstruction extends Entity
         return $this;
     }
 
-    public function addDirectDebitTransactionInformation(DirectDebitTransactionInformation $directDebitTransactionInformation): self
+    public function addDirectDebitTransactionInformation(DirectDebitTransactionInformation $dbtxInfo): self
     {
-        $this->directDebitTransactionInformation[] = $directDebitTransactionInformation->getTag();
+        $this->directDebitTransactionInformation[] = $dbtxInfo->getTag();
         return $this;
     }
 
