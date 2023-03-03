@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\ServiceLevelCode;
@@ -13,13 +14,13 @@ class ServiceLevel extends Tag
     /**
      * @var ServiceLevelCode
      */
-    private $serviceLevelCode;  
+    private $serviceLevelCode;
 
     public function setServiceLevel(\Condividendo\LaravelCBI\Enums\ServiceLevel $serviceLevel): self
     {
         $this->serviceLevelCode = ServiceLevelCode::make()->setServiceLevel($serviceLevel);
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

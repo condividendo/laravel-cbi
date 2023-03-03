@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -20,7 +21,7 @@ class PartyId extends Tag
     {
         $this->partyPrivateId = PartyPrivateId::make()->setId($id);
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

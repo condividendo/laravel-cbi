@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -20,7 +21,7 @@ class ExecutingBank extends Tag
     {
         $this->financialInstitution = $financialInstitution;
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

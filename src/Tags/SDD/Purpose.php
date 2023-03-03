@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;

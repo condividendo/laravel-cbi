@@ -9,7 +9,7 @@ use BenSampo\Enum\Enum;
  * @method static self IT() Italy
  * @method static self SM() San Marino
  * @method static self VA() Vatican
- * 
+ *
  */
 final class Country extends Enum
 {

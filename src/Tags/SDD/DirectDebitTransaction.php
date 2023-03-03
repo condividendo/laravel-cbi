@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -20,7 +21,7 @@ class DirectDebitTransaction extends Tag
     {
         $this->mandateRelatedInformation = $mandateRelatedInformation;
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

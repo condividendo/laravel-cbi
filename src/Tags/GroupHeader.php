@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -51,28 +52,28 @@ class GroupHeader extends Tag
         $this->creditTime = CreditTime::make()->setCreditTime($creditTime);
 
         return $this;
-    }  
+    }
 
     public function setNumberOfTxs(int $numberOfTxs): self
     {
         $this->numberOfTxs = NumberOfTxs::make()->setNumberOfTxs($numberOfTxs);
 
         return $this;
-    }  
+    }
 
     public function setControlSum(string $controlSum): self
     {
         $this->ctrlSum = CtrlSum::make()->setControlSum($controlSum);
 
         return $this;
-    }  
+    }
 
     public function setInitiatingParty(InitiatingParty $initiatingParty): self
     {
         $this->initiatingParty = $initiatingParty;
 
         return $this;
-    }      
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

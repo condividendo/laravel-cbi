@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -20,7 +21,7 @@ class IdWithIban extends Tag
     {
         $this->iban = Iban::make()->setAccount($iban);
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

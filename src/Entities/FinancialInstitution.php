@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Entities\Entity;
@@ -14,17 +15,16 @@ class FinancialInstitution extends Entity
      * @var string
      */
     private $memberId;
-    
+
     public function setClearingSystemMemberId(string $memberId): self
     {
         $this->memberId = $memberId;
         return $this;
-    }  
-    
+    }
+
     public function getTag(): FinancialInstitutionTag
     {
         return FinancialInstitutionTag::make()
                 ->setClearingSystemMemberId($this->memberId);
     }
-
 }

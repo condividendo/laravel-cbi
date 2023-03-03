@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities\SDD;
 
 use Condividendo\LaravelCBI\Entities\Entity;
@@ -71,7 +72,7 @@ class PaymentInstruction extends Entity
      * @var array<DirectDebitTransactionInformation>
      */
     private $directDebitTransactionInformation = [];
-    
+
     public function setBatchBooking(bool $batchBooking): self
     {
         $this->batchBooking = $batchBooking;
@@ -113,7 +114,7 @@ class PaymentInstruction extends Entity
         $this->paymentMethod = $paymentMethod;
         return $this;
     }
-    
+
     public function setPaymentTypeInfo(PaymentTypeInfo $paymentTypeInfo): self
     {
         $this->paymentTypeInfo = $paymentTypeInfo->getTag();
@@ -124,14 +125,14 @@ class PaymentInstruction extends Entity
     {
         $this->id = $id;
         return $this;
-    }     
+    }
 
     public function setCreditorSchemeId(CreditorSchemeId $creditorSchemeId): self
     {
         $this->creditorSchemeId = $creditorSchemeId->getTag();
         return $this;
     }
-    
+
     public function getTag(): PaymentInstructionTag
     {
         $tag = PaymentInstructionTag::make()
@@ -144,7 +145,7 @@ class PaymentInstruction extends Entity
                 ->setCreditorSchemeId($this->creditorSchemeId)
                 ->setRequiredCollectionDate($this->requiredCollectionDate)
                 ->setBatchBooking($this->batchBooking ? true : false);
-        foreach($this->directDebitTransactionInformation as $info){
+        foreach ($this->directDebitTransactionInformation as $info) {
             $tag->addDirectDebitTransactionInformation($info);
         }
         return $tag;

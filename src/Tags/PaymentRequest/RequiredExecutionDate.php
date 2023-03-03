@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -15,19 +16,19 @@ class RequiredExecutionDate extends Tag
     /**
      * @var string
      */
-    private $requiredExecutionDate;  
+    private $requiredExecutionDate;
 
     public function setRequiredExecutionDate(string $requiredExecutionDate): self
     {
         $this->requiredExecutionDate = $this->makeDate($requiredExecutionDate)->toDateString();
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('ReqdExctnDt',$this->requiredExecutionDate);
+        return $dom->createElement('ReqdExctnDt', $this->requiredExecutionDate);
     }
 }

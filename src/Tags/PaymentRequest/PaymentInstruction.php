@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentMethod;
@@ -73,7 +74,7 @@ class PaymentInstruction extends Tag
      * @var array<CreditTransferTransactionInformation>
      */
     private $creditTransferTransactionInformation = [];
-    
+
     public function setBatchBooking(bool $batchBooking): self
     {
         $this->batchBooking = BatchBooking::make()->setBatchBooking($batchBooking);
@@ -115,13 +116,13 @@ class PaymentInstruction extends Tag
         $this->paymentMethod = PaymentMethodTag::make()->setPaymentMethod($paymentMethod);
         return $this;
     }
-    
+
     public function setPaymentTypeInfo(PaymentTypeInfo $paymentTypeInfo): self
     {
         $this->paymentTypeInfo = $paymentTypeInfo;
         return $this;
     }
-    
+
     public function setCommissionPayer(CommissionPayer $commissionPayer): self
     {
         $this->commissionPayer = CommissionPayerTag::make()->setCommissionPayer($commissionPayer);
@@ -132,7 +133,7 @@ class PaymentInstruction extends Tag
     {
         $this->id = PaymentInstructionId::make()->setPaymentInstructionId($id);
         return $this;
-    }   
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
@@ -143,7 +144,7 @@ class PaymentInstruction extends Tag
 
         $e->appendChild($this->id->toDOMElement($dom));
         $e->appendChild($this->paymentMethod->toDOMElement($dom));
-        $e->appendChild($this->batchBooking->toDOMElement($dom));        
+        $e->appendChild($this->batchBooking->toDOMElement($dom));
         $e->appendChild($this->paymentTypeInfo->toDOMElement($dom));
         $e->appendChild($this->requiredExecutionDate->toDOMElement($dom));
         $e->appendChild($this->debtor->toDOMElement($dom));
@@ -153,7 +154,7 @@ class PaymentInstruction extends Tag
 
         foreach ($this->creditTransferTransactionInformation as $info) {
             $e->appendChild($info->toDOMElement($dom));
-        }               
+        }
 
         return $e;
     }

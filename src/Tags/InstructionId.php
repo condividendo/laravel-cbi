@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -14,13 +15,13 @@ class InstructionId extends Tag
      * @var string
      */
     private $instructionId;
-    
+
     public function setInstructionId(string $instructionId): self
     {
         $this->instructionId = $instructionId;
         return $this;
     }
-    
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */

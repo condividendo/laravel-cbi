@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI;
 
 use Condividendo\LaravelCBI\Entities\PaymentRequest\PaymentInstruction;
@@ -19,7 +20,7 @@ class PaymentRequestBuilder extends GroupHeaderBuilder
         $this->paymentInstruction = $paymentInstruction->getTag();
         return $this;
     }
-    
+
     public function toDOM(): DOMDocument
     {
         $dom = new DOMDocument();
@@ -40,5 +41,4 @@ class PaymentRequestBuilder extends GroupHeaderBuilder
             ->setGroupHeader($this->makeGroupHeader())
             ->setPaymentInstruction($this->paymentInstruction);
     }
-    
 }

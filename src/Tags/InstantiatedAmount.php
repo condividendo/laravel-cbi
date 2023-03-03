@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -14,7 +15,7 @@ class InstantiatedAmount extends Tag
      * @var string
      */
     private $amount;
-        
+
     public function setAmount(string $amount): self
     {
         $this->amount = $amount;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -21,19 +22,19 @@ class PaymentId extends Tag
      * @var EndToEndId
      */
     private $endToEndId;
-    
+
     public function setInstructionId(string $instructionId): self
     {
         $this->instructionId = InstructionId::make()->setInstructionId($instructionId);
         return $this;
     }
-    
+
     public function setEndToEndId(string $endToEndId): self
     {
         $this->endToEndId = EndToEndId::make()->setEndToEndId($endToEndId);
         return $this;
     }
-    
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */

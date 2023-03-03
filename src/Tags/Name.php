@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -12,19 +13,19 @@ class Name extends Tag
     /**
      * @var string
      */
-    private $name;  
+    private $name;
 
     public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('Nm',$this->name);
+        return $dom->createElement('Nm', $this->name);
     }
 }

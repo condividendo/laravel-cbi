@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Entities\Entity;
@@ -19,19 +20,19 @@ class PaymentId extends Entity
      * @var string
      */
     private $endToEndId;
-    
+
     public function setInstructionId(string $instructionId): self
     {
         $this->instructionId = $instructionId;
         return $this;
-    }  
-    
+    }
+
     public function setEndToEndId(string $endToEndId): self
     {
         $this->endToEndId = $endToEndId;
         return $this;
-    }  
-    
+    }
+
     public function getTag(): PaymentIdTag
     {
         return PaymentIdTag::make()

@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -20,7 +21,7 @@ class SDD extends Tag
     /**
      * @var PaymentInstruction
      */
-    private $paymentInstruction;    
+    private $paymentInstruction;
 
     public function setGroupHeader(GroupHeader $groupHeader): self
     {
@@ -47,7 +48,7 @@ class SDD extends Tag
 
         $e->appendChild($this->groupHeader->toDOMElement($dom));
         $e->appendChild($this->paymentInstruction->toDOMElement($dom));
-        
+
         return $e;
     }
 }

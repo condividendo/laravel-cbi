@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
@@ -21,46 +22,46 @@ class PaymentTypeInfo extends Tag
     /**
      * @var PaymentPriorityTag
      */
-    private $paymentPriority;  
+    private $paymentPriority;
 
     /**
      * @var ServiceLevelTag
      */
-    private $serviceLevel;  
+    private $serviceLevel;
 
     /**
      * @var LocalInstrumentTag
      */
-    private $localInstrument; 
+    private $localInstrument;
 
     /**
      * @var SequenceTypeTag
      */
-    private $sequenceType; 
+    private $sequenceType;
 
     public function setPaymentPriority(PaymentPriority $paymentPriority): self
     {
         $this->paymentPriority = PaymentPriorityTag::make()->setPaymentPriority($paymentPriority);
         return $this;
-    }    
+    }
 
     public function setServiceLevel(ServiceLevel $serviceLevel): self
     {
         $this->serviceLevel = ServiceLevelTag::make()->setServiceLevel($serviceLevel);
         return $this;
-    }    
+    }
 
     public function setLocalInstrument(LocalInstrument $localInstrument): self
     {
         $this->localInstrument = LocalInstrumentTag::make()->setLocalInstrument($localInstrument);
         return $this;
-    }    
+    }
 
     public function setSequenceType(SequenceType $sequenceType): self
     {
         $this->sequenceType = SequenceTypeTag::make()->setSequenceType($sequenceType);
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
@@ -68,15 +69,15 @@ class PaymentTypeInfo extends Tag
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
         $e = $dom->createElement('PmtTpInf');
-        if($this->paymentPriority){
+        if ($this->paymentPriority) {
             $e->appendChild($this->paymentPriority->toDOMElement($dom));
         }
         $e->appendChild($this->serviceLevel->toDOMElement($dom));
-        if($this->localInstrument){
-            $e->appendChild($this->localInstrument->toDOMElement($dom));            
+        if ($this->localInstrument) {
+            $e->appendChild($this->localInstrument->toDOMElement($dom));
         }
-        if($this->sequenceType){
-            $e->appendChild($this->sequenceType->toDOMElement($dom));            
+        if ($this->sequenceType) {
+            $e->appendChild($this->sequenceType->toDOMElement($dom));
         }
         return $e;
     }

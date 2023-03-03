@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -14,19 +15,19 @@ class NumberOfTxs extends Tag
     /**
      * @var int
      */
-    private $numberOfTxs;  
+    private $numberOfTxs;
 
     public function setNumberOfTxs(int $numberOfTxs): self
     {
         $this->numberOfTxs = $numberOfTxs;
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('NbOfTxs',$this->numberOfTxs);
+        return $dom->createElement('NbOfTxs', $this->numberOfTxs);
     }
 }

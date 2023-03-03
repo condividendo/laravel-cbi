@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -20,7 +21,7 @@ class FinancialInstitution extends Tag
     {
         $this->clrSysMmbId = ClrSysMmbId::make()->setClearingSystemMemberId($memberId);
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
 
 use Condividendo\LaravelCBI\Enums\PaymentRequest\CategoryPurpose;
@@ -15,13 +16,13 @@ class PaymentTypeInformation extends Entity
      * @var CategoryPurpose
      */
     private $categoryPurpose;
-    
+
     public function setCategoryPurpose(CategoryPurpose $categoryPurpose): self
     {
         $this->categoryPurpose = $categoryPurpose;
         return $this;
-    }  
-    
+    }
+
     public function getTag(): PaymentTypeInformationTag
     {
         return PaymentTypeInformationTag::make()

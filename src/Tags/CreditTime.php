@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -14,20 +15,21 @@ class CreditTime extends Tag
     /**
      * @var string
      */
-    private $creditTime;  
+    private $creditTime;
 
     public function setCreditTime(string $creditTime): self
     {
-        $this->creditTime = self::makeDate($creditTime)->toIso8601String();;
+        $this->creditTime = self::makeDate($creditTime)->toIso8601String();
+        ;
 
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('CreDtTm',$this->creditTime);
+        return $dom->createElement('CreDtTm', $this->creditTime);
     }
 }

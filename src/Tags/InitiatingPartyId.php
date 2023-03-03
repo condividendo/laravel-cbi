@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Enums\OrgIdType;
@@ -18,9 +19,9 @@ class InitiatingPartyId extends Tag
 
     public function setId(string $id, OrgIdType $issr): self
     {
-        $this->orgId = OrgId::make()->setId($id,$issr);
+        $this->orgId = OrgId::make()->setId($id, $issr);
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

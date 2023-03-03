@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -27,7 +28,7 @@ class CreditorSchemeId extends Tag
         $this->name = Name::make()->setName($name);
         $this->creditorId = PartyId::make()->setId($id);
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities\SDD;
 
 use Condividendo\LaravelCBI\Enums\SDD\Purpose;
@@ -53,49 +54,49 @@ class DirectDebitTransactionInformation extends Entity
      * @var RemittanceInformationTag
      */
     private $remittanceInformation;
-    
+
     public function setPurpose(Purpose $purpose): self
     {
         $this->purpose = $purpose;
         return $this;
-    }  
-    
+    }
+
     public function setDebtorAccount(string $debtorAccount): self
     {
         $this->debtorAccount = $debtorAccount;
         return $this;
-    }  
+    }
 
     public function setAmount(string $amount): self
     {
         $this->amount = $amount;
         return $this;
-    }  
-    
+    }
+
     public function setPaymentId(PaymentId $paymentId): self
     {
         $this->paymentId = $paymentId->getTag();
         return $this;
-    }  
-    
+    }
+
     public function setMandateRelatedInformation(MandateRelatedInformation $mndt): self
     {
         $this->directDebitTransaction = DirectDebitTransactionTag::make()->setMandateRelatedInformation($mndt->getTag());
         return $this;
-    }  
-    
+    }
+
     public function setDebtor(PartyIdentification $partyIdentification): self
     {
         $this->partyIdentification = $partyIdentification->getTag();
         return $this;
-    }  
-    
+    }
+
     public function setRemittanceInformation(RemittanceInformation $remittanceInformation): self
     {
         $this->remittanceInformation = $remittanceInformation->getTag();
         return $this;
-    }  
-    
+    }
+
     public function getTag(): DirectDebitTransactionInformationTag
     {
         return DirectDebitTransactionInformationTag::make()

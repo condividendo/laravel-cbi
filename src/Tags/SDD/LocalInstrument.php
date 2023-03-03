@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -10,11 +11,11 @@ use DOMElement;
 class LocalInstrument extends Tag
 {
     use Makeable;
-    
+
     /**
      * @var LocalInstrumentCode
      */
-    private $localInstrument; 
+    private $localInstrument;
 
     public function setLocalInstrument(\Condividendo\LaravelCBI\Enums\SDD\LocalInstrument $localInstrument): self
     {

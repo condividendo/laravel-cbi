@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -15,13 +16,13 @@ class Amount extends Tag
      * @var InstantiatedAmount
      */
     private $amount;
-        
+
     public function setAmount(string $amount): self
     {
         $this->amount = InstantiatedAmount::make()->setAmount($amount);
         return $this;
     }
-        
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */

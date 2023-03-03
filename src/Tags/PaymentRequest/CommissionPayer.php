@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -19,14 +20,14 @@ class CommissionPayer extends Tag
     {
         $this->commissionPayer = $commissionPayer;
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('ChrgBr',$this->commissionPayer->value);
+        $e = $dom->createElement('ChrgBr', $this->commissionPayer->value);
         return $e;
     }
 }

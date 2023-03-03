@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Enums\OrgIdType;
@@ -20,7 +21,7 @@ class OrgId extends Tag
     {
         $this->other = Other::make()->setId($id)->setIssr($issr);
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

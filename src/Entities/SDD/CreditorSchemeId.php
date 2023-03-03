@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities\SDD;
 
 use Condividendo\LaravelCBI\Entities\Entity;
@@ -24,17 +25,17 @@ class CreditorSchemeId extends Entity
     {
         $this->name = $name;
         return $this;
-    }  
+    }
 
     public function setId(string $id): self
     {
         $this->id = $id;
         return $this;
-    }  
-    
+    }
+
     public function getTag(): CreditorSchemeIdTag
     {
         return CreditorSchemeIdTag::make()
-                ->setId($this->name,$this->id);
-    }    
+                ->setId($this->name, $this->id);
+    }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
 
 use Condividendo\LaravelCBI\Entities\Entity;
@@ -70,7 +71,7 @@ class PaymentInstruction extends Entity
      * @var array<CreditTransferTransactionInformationTag>
      */
     private $creditTransferTransactionInformation = [];
-    
+
     public function setBatchBooking(bool $batchBooking): self
     {
         $this->batchBooking = $batchBooking;
@@ -112,13 +113,13 @@ class PaymentInstruction extends Entity
         $this->paymentMethod = $paymentMethod;
         return $this;
     }
-    
+
     public function setPaymentTypeInfo(PaymentTypeInfo $paymentTypeInfo): self
     {
         $this->paymentTypeInfo = $paymentTypeInfo->getTag();
         return $this;
     }
-    
+
     public function setCommissionPayer(CommissionPayer $commissionPayer): self
     {
         $this->commissionPayer = $commissionPayer;
@@ -129,8 +130,8 @@ class PaymentInstruction extends Entity
     {
         $this->id = $id;
         return $this;
-    }     
-    
+    }
+
     public function getTag(): PaymentInstructionTag
     {
         $tag = PaymentInstructionTag::make()
@@ -143,7 +144,7 @@ class PaymentInstruction extends Entity
                 ->setDebtorAccount($this->debtorAccount)
                 ->setRequiredExecutionDate($this->requiredExecutionDate)
                 ->setBatchBooking($this->batchBooking ? true : false);
-        foreach($this->creditTransferTransactionInformation as $info){
+        foreach ($this->creditTransferTransactionInformation as $info) {
             $tag->addCreditTransferTransactionInformation($info);
         }
         return $tag;

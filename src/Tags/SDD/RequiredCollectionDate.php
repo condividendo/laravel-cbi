@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -15,19 +16,19 @@ class RequiredCollectionDate extends Tag
     /**
      * @var string
      */
-    private $requiredCollectionDate;  
+    private $requiredCollectionDate;
 
     public function setRequiredCollectionDate(string $requiredCollectionDate): self
     {
         $this->requiredCollectionDate = $this->makeDate($requiredCollectionDate)->toDateString();
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('ReqdColltnDt',$this->requiredCollectionDate);
+        return $dom->createElement('ReqdColltnDt', $this->requiredCollectionDate);
     }
 }

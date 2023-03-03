@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Entities\Entity;
@@ -14,13 +15,13 @@ class RemittanceInformation extends Entity
      * @var string
      */
     private $unstructured;
-    
+
     public function setUnstructured(string $unstructured): self
     {
         $this->unstructured = $unstructured;
         return $this;
-    }  
-    
+    }
+
     public function getTag(): RemittanceInformationTag
     {
         return RemittanceInformationTag::make()

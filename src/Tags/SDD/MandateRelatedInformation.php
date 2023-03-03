@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -32,19 +33,19 @@ class MandateRelatedInformation extends Tag
     {
         $this->mandateId = MandateId::make()->setMandateId($mandateId);
         return $this;
-    }  
+    }
 
     public function setDateOfSignature(string $date): self
     {
         $this->dateOfSignature = DateOfSignature::make()->setDateOfSignature($date);
         return $this;
-    }  
+    }
 
     public function setAmendmentIndicator(bool $amendmentIndicator): self
     {
         $this->amendmentIndicator = AmendmentIndicator::make()->setAmendmentIndicator($amendmentIndicator);
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

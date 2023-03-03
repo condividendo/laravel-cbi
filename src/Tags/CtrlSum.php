@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -14,20 +15,20 @@ class CtrlSum extends Tag
     /**
      * @var string
      */
-    private $controlSum;  
+    private $controlSum;
 
     public function setControlSum(string $controlSum): self
     {
         $this->controlSum = self::makeDecimal($controlSum);
 
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('CtrlSum',$this->controlSum);
+        return $dom->createElement('CtrlSum', $this->controlSum);
     }
 }

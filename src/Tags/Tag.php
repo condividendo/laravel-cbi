@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Brick\Math\BigDecimal;
@@ -7,8 +8,9 @@ use ValueError;
 
 abstract class Tag implements TagContract
 {
-
-    final public function __construct() { }
+    final public function __construct()
+    {
+    }
 
     protected static function checkScale(BigDecimal $decimal, int $minScale = 2, int $maxScale = 2): void
     {

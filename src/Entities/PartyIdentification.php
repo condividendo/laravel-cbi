@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Entities\Entity;
@@ -19,40 +20,40 @@ class PartyIdentification extends Entity
 
     /**
      * @var PostalAddressTag
-     */ 
-    private $postalAddress; 
+     */
+    private $postalAddress;
 
     /**
      * @var string
-     */ 
-    private $privateId; 
-    
+     */
+    private $privateId;
+
     public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
-    }  
-    
+    }
+
     public function setPrivateId(string $privateId): self
     {
         $this->privateId = $privateId;
         return $this;
-    }  
-    
+    }
+
     public function setPostalAddress(PostalAddress $postalAddress): self
     {
         $this->postalAddress = $postalAddress->getTag();
         return $this;
-    }  
-    
+    }
+
     public function getTag(): PartyIdentificationTag
     {
         $tag = PartyIdentificationTag::make()
                 ->setName($this->name);
-        if($this->privateId){
+        if ($this->privateId) {
             $tag->setPrivateId($this->privateId);
         }
-        if($this->postalAddress){
+        if ($this->postalAddress) {
             $tag->setPostalAddress($this->postalAddress);
         }
         return $tag;

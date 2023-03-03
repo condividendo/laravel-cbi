@@ -9,7 +9,7 @@ use BenSampo\Enum\Enum;
  * @method static self ADDR() Residence address
  * @method static self BIZZ() Office address
  * @method static self DLVY() Shipping address
- * 
+ *
  */
 final class AddressType extends Enum
 {

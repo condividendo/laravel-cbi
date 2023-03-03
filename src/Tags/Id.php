@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -12,20 +13,20 @@ class Id extends Tag
     /**
      * @var string
      */
-    private $id;  
+    private $id;
 
     public function setId(string $id): self
     {
         $this->id = $id;
 
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('Id',$this->id);
+        return $dom->createElement('Id', $this->id);
     }
 }

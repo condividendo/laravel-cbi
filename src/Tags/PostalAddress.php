@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Enums\Country;
@@ -51,31 +52,31 @@ class PostalAddress extends Tag
     {
         $this->streetName = StreetName::make()->setStreetName($streetName);
         return $this;
-    }  
+    }
 
     public function addAddressLine(string $addressLine): self
     {
         $this->addressLines[] = AddressLine::make()->setAddressLine($addressLine);
         return $this;
-    }  
+    }
 
     public function setCity(string $city): self
     {
         $this->city = City::make()->setCity($city);
         return $this;
-    }  
+    }
 
     public function setPostalCode(string $postalCode): self
     {
         $this->postalCode = PostalCode::make()->setPostalCode($postalCode);
         return $this;
-    }  
+    }
 
     public function setCountry(Country $country): self
     {
         $this->country = CountryTag::make()->setCountry($country);
         return $this;
-    }  
+    }
 
     public function setAddressType(AddressType $addressType): self
     {
@@ -89,23 +90,23 @@ class PostalAddress extends Tag
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
         $e = $dom->createElement('PstlAdr');
-        if($this->addressType){
+        if ($this->addressType) {
             $e->appendChild($this->addressType->toDOMElement($dom));
         }
-        if($this->streetName){
+        if ($this->streetName) {
             $e->appendChild($this->streetName->toDOMElement($dom));
         }
-        if($this->postalCode){
+        if ($this->postalCode) {
             $e->appendChild($this->postalCode->toDOMElement($dom));
         }
-        if($this->city){
+        if ($this->city) {
             $e->appendChild($this->city->toDOMElement($dom));
         }
-        if($this->country){
+        if ($this->country) {
             $e->appendChild($this->country->toDOMElement($dom));
         }
-        if($this->addressLines){
-            foreach($this->addressLines as $al){
+        if ($this->addressLines) {
+            foreach ($this->addressLines as $al) {
                 $e->appendChild($al->toDOMElement($dom));
             }
         }

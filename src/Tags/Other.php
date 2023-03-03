@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Enums\OrgIdType;
@@ -21,7 +22,7 @@ class Other extends Tag
      * @var Id
      */
     private $id;
-    
+
     public function setIssr(OrgIdType $issr): self
     {
         $this->issr = Issr::make()->setIssr($issr);
@@ -32,7 +33,7 @@ class Other extends Tag
     {
         $this->id = Id::make()->setId($id);
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
@@ -40,10 +41,10 @@ class Other extends Tag
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
         $e = $dom->createElement('Othr');
-        if($this->id){
+        if ($this->id) {
             $e->appendChild($this->id->toDOMElement($dom));
         }
-        if($this->issr){
+        if ($this->issr) {
             $e->appendChild($this->issr->toDOMElement($dom));
         }
         return $e;

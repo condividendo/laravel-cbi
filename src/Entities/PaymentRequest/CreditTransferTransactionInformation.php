@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities\PaymentRequest;
 
 use Condividendo\LaravelCBI\Entities\Entity;
@@ -47,43 +48,43 @@ class CreditTransferTransactionInformation extends Entity
      * @var RemittanceInformationTag
      */
     private $remittanceInformation;
-    
+
     public function setCreditorAccount(string $creditorAccount): self
     {
         $this->creditorAccount = $creditorAccount;
         return $this;
-    }  
+    }
 
     public function setAmount(string $amount): self
     {
         $this->amount = $amount;
         return $this;
-    }  
-    
+    }
+
     public function setPaymentId(PaymentId $paymentId): self
     {
         $this->paymentId = $paymentId->getTag();
         return $this;
-    }  
-    
+    }
+
     public function setPaymentTypeInformation(PaymentTypeInformation $paymentTypeInformation): self
     {
         $this->paymentTypeInformation = $paymentTypeInformation->getTag();
         return $this;
-    }  
-    
+    }
+
     public function setCreditor(PartyIdentification $partyIdentification): self
     {
         $this->partyIdentification = $partyIdentification->getTag();
         return $this;
-    }  
-    
+    }
+
     public function setRemittanceInformation(RemittanceInformation $remittanceInformation): self
     {
         $this->remittanceInformation = $remittanceInformation->getTag();
         return $this;
-    }  
-    
+    }
+
     public function getTag(): CreditTransferTransactionInformationTag
     {
         $tag = CreditTransferTransactionInformationTag::make()
@@ -91,10 +92,10 @@ class CreditTransferTransactionInformation extends Entity
                 ->setPaymentId($this->paymentId)
                 ->setAmount($this->amount)
                 ->setCreditor($this->partyIdentification);
-        if($this->paymentTypeInformation){
+        if ($this->paymentTypeInformation) {
             $tag->setPaymentTypeInformation($this->paymentTypeInformation);
         }
-        if($this->remittanceInformation){
+        if ($this->remittanceInformation) {
             $tag->setRemittanceInformation($this->remittanceInformation);
         }
         return $tag;

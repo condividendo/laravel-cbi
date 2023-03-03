@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -13,19 +14,19 @@ class PaymentPriority extends Tag
     /**
      * @var \Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority
      */
-    private $paymentPriority;  
+    private $paymentPriority;
 
     public function setPaymentPriority(\Condividendo\LaravelCBI\Enums\PaymentRequest\PaymentPriority $paymentPriority): self
     {
         $this->paymentPriority = $paymentPriority;
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('InstrPrty',$this->paymentPriority->value);
+        return $dom->createElement('InstrPrty', $this->paymentPriority->value);
     }
 }

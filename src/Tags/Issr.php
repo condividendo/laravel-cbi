@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Enums\OrgIdType;
@@ -13,19 +14,19 @@ class Issr extends Tag
     /**
      * @var OrgIdType
      */
-    private $issr;  
+    private $issr;
 
     public function setIssr(OrgIdType $issr): self
     {
         $this->issr = $issr;
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('Issr',$this->issr->value);
+        return $dom->createElement('Issr', $this->issr->value);
     }
 }

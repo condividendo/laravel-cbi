@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Entities;
 
 use Condividendo\LaravelCBI\Enums\OrgIdType;
@@ -24,7 +25,7 @@ class InitiatingParty extends Entity
      * @var OrgIdType
      */
     private $issr;
-    
+
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -37,13 +38,12 @@ class InitiatingParty extends Entity
         $this->id = $id;
         $this->issr = $issr;
         return $this;
-    }    
-    
+    }
+
     public function getTag(): InitiatingPartyTag
     {
         return InitiatingPartyTag::make()
             ->setName($this->name)
-            ->setId($this->id,$this->issr);
+            ->setId($this->id, $this->issr);
     }
-
 }

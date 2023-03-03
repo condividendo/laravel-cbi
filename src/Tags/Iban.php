@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -19,14 +20,14 @@ class Iban extends Tag
     {
         $this->iban = $iban;
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        $e = $dom->createElement('IBAN',$this->iban);
+        $e = $dom->createElement('IBAN', $this->iban);
         return $e;
     }
 }

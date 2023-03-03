@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -9,11 +10,11 @@ use DOMElement;
 class SequenceType extends Tag
 {
     use Makeable;
-    
+
     /**
      * @var \Condividendo\LaravelCBI\Enums\SDD\SequenceType
      */
-    private $sequenceType; 
+    private $sequenceType;
 
     public function setSequenceType(\Condividendo\LaravelCBI\Enums\SDD\SequenceType $sequenceType): self
     {

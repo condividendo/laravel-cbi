@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Enums\ServiceLevel;
@@ -71,7 +72,7 @@ class PaymentInstruction extends Tag
      * @var array<DirectDebitTransactionInformation>
      */
     private $directDebitTransactionInformation = [];
-    
+
     public function setBatchBooking(bool $batchBooking): self
     {
         $this->batchBooking = BatchBooking::make()->setBatchBooking($batchBooking);
@@ -101,7 +102,7 @@ class PaymentInstruction extends Tag
         $this->paymentMethod = PaymentMethodTag::make()->setPaymentMethod($paymentMethod);
         return $this;
     }
-    
+
     public function setPaymentTypeInfo(PaymentTypeInfo $paymentTypeInfo): self
     {
         $this->paymentTypeInfo = $paymentTypeInfo;
@@ -112,13 +113,13 @@ class PaymentInstruction extends Tag
     {
         $this->id = PaymentInstructionId::make()->setPaymentInstructionId($id);
         return $this;
-    }   
+    }
 
     public function setRequiredCollectionDate(string $date): self
     {
         $this->requiredCollectionDate = RequiredCollectionDate::make()->setRequiredCollectionDate($date);
         return $this;
-    }  
+    }
 
     public function setExecutingBank(ExecutingBank $executingBank): self
     {
@@ -141,7 +142,7 @@ class PaymentInstruction extends Tag
 
         $e->appendChild($this->id->toDOMElement($dom));
         $e->appendChild($this->paymentMethod->toDOMElement($dom));
-        $e->appendChild($this->batchBooking->toDOMElement($dom));        
+        $e->appendChild($this->batchBooking->toDOMElement($dom));
         $e->appendChild($this->paymentTypeInfo->toDOMElement($dom));
         $e->appendChild($this->requiredCollectionDate->toDOMElement($dom));
         $e->appendChild($this->creditor->toDOMElement($dom));
@@ -151,7 +152,7 @@ class PaymentInstruction extends Tag
 
         foreach ($this->directDebitTransactionInformation as $info) {
             $e->appendChild($info->toDOMElement($dom));
-        }               
+        }
 
         return $e;
     }

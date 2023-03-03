@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -45,7 +46,7 @@ class CreditTransferTransactionInformation extends Tag
      * @var RemittanceInformation
      */
     private $remittanceInformation;
-    
+
     public function setCreditorAccount(string $creditorAccount): self
     {
         $this->creditorAccount = CreditorAccount::make()->setCreditorAccount($creditorAccount);
@@ -56,32 +57,32 @@ class CreditTransferTransactionInformation extends Tag
     {
         $this->amount = Amount::make()->setAmount($amount);
         return $this;
-    }  
-    
+    }
+
     public function setPaymentId(PaymentId $paymentId): self
     {
         $this->paymentId = $paymentId;
         return $this;
-    }  
-    
+    }
+
     public function setPaymentTypeInformation(PaymentTypeInformation $paymentTypeInformation): self
     {
         $this->paymentTypeInformation = $paymentTypeInformation;
         return $this;
-    }  
-    
+    }
+
     public function setCreditor(PartyIdentification $partyIdentification): self
     {
         $this->partyIdentification = $partyIdentification->setAsDebtorOrCreditor(false);
         return $this;
-    }  
-    
+    }
+
     public function setRemittanceInformation(RemittanceInformation $remittanceInformation): self
     {
         $this->remittanceInformation = $remittanceInformation;
         return $this;
-    }  
-    
+    }
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
@@ -89,13 +90,13 @@ class CreditTransferTransactionInformation extends Tag
     {
         $e = $dom->createElement('CdtTrfTxInf');
         $e->appendChild($this->paymentId->toDOMElement($dom));
-        if($this->paymentTypeInformation){
+        if ($this->paymentTypeInformation) {
             $e->appendChild($this->paymentTypeInformation->toDOMElement($dom));
         }
         $e->appendChild($this->amount->toDOMElement($dom));
         $e->appendChild($this->partyIdentification->toDOMElement($dom));
         $e->appendChild($this->creditorAccount->toDOMElement($dom));
-        if($this->remittanceInformation){
+        if ($this->remittanceInformation) {
             $e->appendChild($this->remittanceInformation->toDOMElement($dom));
         }
         return $e;

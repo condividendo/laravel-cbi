@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -19,13 +20,13 @@ class MandateId extends Tag
     {
         $this->mandateId = $mandateId;
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('MndtId',$this->mandateId);
+        return $dom->createElement('MndtId', $this->mandateId);
     }
 }

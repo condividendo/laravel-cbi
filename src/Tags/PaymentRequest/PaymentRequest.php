@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Traits\Makeable;
@@ -20,7 +21,7 @@ class PaymentRequest extends Tag
     /**
      * @var PaymentInstruction
      */
-    private $paymentInstruction;    
+    private $paymentInstruction;
 
     public function setGroupHeader(GroupHeader $groupHeader): self
     {
@@ -46,7 +47,7 @@ class PaymentRequest extends Tag
 
         $e->appendChild($this->groupHeader->toDOMElement($dom));
         $e->appendChild($this->paymentInstruction->toDOMElement($dom));
-        
+
         return $e;
     }
 }

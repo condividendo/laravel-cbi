@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -21,13 +22,13 @@ class DateOfSignature extends Tag
     {
         $this->date = $this->makeDate($date)->toDateString();
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('DtOfSgntr',$this->date);
+        return $dom->createElement('DtOfSgntr', $this->date);
     }
 }

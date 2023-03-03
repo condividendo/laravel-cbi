@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -20,8 +21,8 @@ class CreditorAccount extends Tag
     {
         $this->creditorId = IdWithIban::make()->setAccount($account);
         return $this;
-    }    
-    
+    }
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
@@ -31,5 +32,4 @@ class CreditorAccount extends Tag
         $e->appendChild($this->creditorId->toDOMElement($dom));
         return $e;
     }
-
 }

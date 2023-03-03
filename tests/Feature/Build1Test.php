@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tests\Feature;
 
 use Condividendo\LaravelCBI\Tests\TestCase;
@@ -24,17 +25,17 @@ use Illuminate\Support\Facades\Date;
 
 class Build1Test extends TestCase
 {
-    use UsesDecimal; 
+    use UsesDecimal;
 
     public function test_xml(): void
     {
         $xml = $this->build()->toXML()->asXML();
-        echo "test_xml() xml:\r\n$xml\r\n"; 
+        echo "test_xml() xml:\r\n$xml\r\n";
         assert(is_string($xml));
 
         $this->assertXmlStringEqualsXmlFile(__DIR__ . '/../fixtures/1.xml', $xml);
     }
-    
+
     public function test_schema(): void
     {
         $dom = $this->build()->toDOM();
@@ -72,7 +73,7 @@ class Build1Test extends TestCase
                         ->setDebtor(
                             PartyIdentification::make()
                                 ->setName('Condividendo Italia s.r.l.')
-                        )            
+                        )
                         ->setDebtorAccount('IT60X0542811101000000123456')
                         ->setExecutingBank(
                             FinancialInstitution::make()

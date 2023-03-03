@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -14,7 +15,7 @@ class EndToEndId extends Tag
      * @var string
      */
     private $endToEndId;
-    
+
     public function setEndToEndId(string $endToEndId): self
     {
         $this->endToEndId = $endToEndId;

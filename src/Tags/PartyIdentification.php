@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -37,25 +38,25 @@ class PartyIdentification extends Tag
     {
         $this->name = Name::make()->setName($name);
         return $this;
-    }  
+    }
 
     public function setPostalAddress(PostalAddress $postalAddress): self
     {
         $this->postalAddress = $postalAddress;
         return $this;
-    }  
+    }
 
     public function setPrivateId(string $privateId): self
     {
         $this->partyId = PartyId::make()->setId($privateId);
         return $this;
-    }  
+    }
 
     public function setAsDebtorOrCreditor(bool $isDebtor): self
     {
         $this->isDebtor = $isDebtor;
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection

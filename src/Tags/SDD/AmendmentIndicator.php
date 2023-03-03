@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\SDD;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -19,13 +20,13 @@ class AmendmentIndicator extends Tag
     {
         $this->ind = $ind;
         return $this;
-    }  
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('AmdmntInd',$this->ind ? "true" : "false");
+        return $dom->createElement('AmdmntInd', $this->ind ? "true" : "false");
     }
 }

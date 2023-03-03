@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tests\Feature;
 
 use Condividendo\LaravelCBI\Tests\TestCase;
@@ -28,17 +29,17 @@ use Illuminate\Support\Facades\Date;
 
 class Build3Test extends TestCase
 {
-    use UsesDecimal; 
+    use UsesDecimal;
 
     public function test_xml(): void
     {
         $xml = $this->build()->toXML()->asXML();
-        echo "test_xml() xml:\r\n$xml\r\n"; 
+        echo "test_xml() xml:\r\n$xml\r\n";
         assert(is_string($xml));
 
         $this->assertXmlStringEqualsXmlFile(__DIR__ . '/../fixtures/3.xml', $xml);
     }
-    
+
     public function test_schema(): void
     {
         $dom = $this->build()->toDOM();
@@ -81,7 +82,7 @@ class Build3Test extends TestCase
                                 ->setCountry(Country::IT())
                                 ->addAddressLine("Viale Sardegna, 31")
                                 ->addAddressLine("47838 Riccione (RN)")
-                    )
+                        )
                 )
                 ->setCreditorAccount('IT60X0542811101000000123456')
                 ->setExecutingBank(

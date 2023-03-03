@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags\PaymentRequest;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -15,13 +16,13 @@ class CategoryPurpose extends Tag
      * @var CategoryPurposeCode
      */
     private $code;
-    
+
     public function setCategoryPurpose(\Condividendo\LaravelCBI\Enums\PaymentRequest\CategoryPurpose $categoryPurpose): self
     {
         $this->code = CategoryPurposeCode::make()->setCode($categoryPurpose);
         return $this;
     }
-    
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */

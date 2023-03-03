@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -15,13 +16,13 @@ class RemittanceInformation extends Tag
      * @var Unstructured
      */
     private $unstructured;
-    
+
     public function setUnstructured(string $unstructured): self
     {
         $this->unstructured = Unstructured::make()->setUnstructured($unstructured);
         return $this;
     }
-    
+
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */

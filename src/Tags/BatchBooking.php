@@ -1,4 +1,5 @@
 <?php
+
 namespace Condividendo\LaravelCBI\Tags;
 
 use Condividendo\LaravelCBI\Tags\Tag;
@@ -13,19 +14,19 @@ class BatchBooking extends Tag
     /**
      * @var bool
      */
-    private $batchBooking;  
+    private $batchBooking;
 
     public function setBatchBooking(bool $batchBooking): self
     {
         $this->batchBooking = $batchBooking;
         return $this;
-    }    
+    }
 
     /**
      * @noinspection PhpUnhandledExceptionInspection
      */
     public function toDOMElement(DOMDocument $dom): DOMElement
     {
-        return $dom->createElement('BtchBookg',$this->batchBooking ? "true" : "false");
+        return $dom->createElement('BtchBookg', $this->batchBooking ? "true" : "false");
     }
 }
