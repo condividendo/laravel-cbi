@@ -41,7 +41,7 @@ abstract class TestCase extends BaseTestCase
 
         // Validate w/ XmlValidator
         $xml = file_get_contents($xmlPath);
-        $xmlValidator = new XmlValidator($xml, $xsdPath);
+        $xmlValidator = new XmlValidator();
         $xmlValidator->validate($xml, $xsdPath);
         if (!$xmlValidator->isValid()) {
             foreach ($xmlValidator->errors as $error) {
