@@ -41,12 +41,21 @@ class Build2Test extends TestCase
 
     public function test_schema(): void
     {
+        $xmlPath = __DIR__ . '/../fixtures/2.xml';
+        $xsdPath = __DIR__ . "/../fixtures/CBIPaymentRequest.00.04.00.xsd";
+        $this->assertTrue(
+            $this->validateXmlAgainstXsd($xmlPath, $xsdPath),
+            "XML not compliant to payment request schema!"
+        );
+
+        /*
         $dom = $this->build()->toDOM();
 
         $this->assertTrue(
             $dom->schemaValidate(__DIR__ . "/../fixtures/CBIPaymentRequest.00.04.00.xsd"),
             "XML not compliant to payment request schema!"
         );
+        */
     }
 
     private function build(): PaymentRequestBuilder

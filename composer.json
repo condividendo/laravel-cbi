@@ -4,6 +4,8 @@
         "php": "^7.1",
         "ext-dom": "*",
         "ext-simplexml": "*",
+        "ext-xmlreader": "*",
+        "seromenho/xml-validator": "*",
         "brick/money": "^0.5.3",
         "bensampo/laravel-enum": "1.*",
         "illuminate/support": "5.8.*"
